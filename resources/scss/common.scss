@@ -41,7 +41,13 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", Arial, sans-serif;   
 }
 
+@mixin head-bg-img {
+    background-image: url(../images/main/main_icon.png);
+    background-size: 323px 185px;
+    background-repeat: no-repeat;
+}
 .header {
+
     @include size($w: 100%, $minw: 320px, $maxw:1024px);
     box-sizing: border-box;
     margin: 0 auto;
@@ -49,8 +55,7 @@ body {
     @include display($d: flex, $jc: space-between, $ai: center);
     &__btn {
         @include size($w: 40px, $h: 40px);
-        background-image: url(../images/main/main_icon.png);
-        background-size: 323px 185px;
+        @include head-bg-img;
         &.all-menu {
             background-position: -135px -145px;
         }
@@ -68,6 +73,36 @@ body {
         }
         &.my {
             background-position: -90px -145px; 
+        }
+
+    }
+}
+
+.main {
+    margin: 60px auto 0;
+    @include size($w: 100%, $minw: 320px, $maxw:1024px);
+    box-sizing: border-box;
+    &-search {
+        padding: 0 20px;
+        @include size($w: 100%, $maxw:570px);
+        margin: 0 auto;
+        &__logo {
+            background: linear-gradient(135deg,#03cf5d 0,#03c75a 100%);
+            @include size($w: 40px, $h:40px);
+        }
+        &__logo::before {
+            content: '';
+            display: block;
+            @include head-bg-img;
+            background-position: -270px -145px;
+        }
+        &__input {
+            @include size($w: 100%, $h:50px);
+            box-sizing: border-box;
+            border-radius: 50px;
+        }
+        &-tool-btn {
+            @include size($w: 100%, $h:50px);
         }
     }
 }
