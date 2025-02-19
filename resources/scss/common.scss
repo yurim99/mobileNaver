@@ -1,0 +1,73 @@
+@mixin txt($fs: null, $fw: null, $lh: null, $ta: null) {
+    font-size: $fs;
+    font-weight: $fw;
+    line-height: $lh;
+    text-align: $ta;
+}
+
+@mixin display($d: null, $jc: null, $ai: null, $fd: null, $fw: null) {
+    display: $d;
+    justify-content: $jc;
+    align-items: $ai;
+    flex-direction: $fd;
+    flex-wrap: $fw;
+}
+
+@mixin size($w: null, $minw: null, $maxw: null, $h: null, $minh: null, $maxh: null ) {
+    width: $w;
+    min-width: $minw;
+    max-width: $maxw;
+    height: $h;
+    min-height: $minh;
+    max-height: $maxh;
+}
+
+@mixin position($p: absolute, $t: null, $b: null, $l: null, $r: null, $z: null) {
+    position: $p;
+    top: $t;
+    bottom: $b;
+    left: $l;
+    right: $r;
+    z-index: $z;
+}
+
+@mixin bg {
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+body {
+    background-color: #f4f6f8;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", Arial, sans-serif;   
+}
+
+.header {
+    @include size($w: 100%, $minw: 320px, $maxw:1024px);
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: .8rem 1rem;
+    @include display($d: flex, $jc: space-between, $ai: center);
+    &__btn {
+        @include size($w: 40px, $h: 40px);
+        background-image: url(../images/main/main_icon.png);
+        background-size: 323px 185px;
+        &.all-menu {
+            background-position: -135px -145px;
+        }
+        &.pay {
+            background-position: -45px -145px;
+        }
+        &.shopping-cart {
+            background-position: -180px -145px;
+        }
+        &.talk {
+            background-position: -225px -145px; 
+        }
+        &.notice {
+            background-position: -93px -59px; 
+        }
+        &.my {
+            background-position: -90px -145px; 
+        }
+    }
+}

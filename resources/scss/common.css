@@ -1,0 +1,40 @@
+body {
+  background-color: #f4f6f8;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", Arial, sans-serif;
+}
+
+.header {
+  width: 100%;
+  min-width: 320px;
+  max-width: 1024px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0.8rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__btn {
+  width: 40px;
+  height: 40px;
+  background-image: url(../images/main/main_icon.png);
+  background-size: 323px 185px;
+}
+.header__btn.all-menu {
+  background-position: -135px -145px;
+}
+.header__btn.pay {
+  background-position: -45px -145px;
+}
+.header__btn.shopping-cart {
+  background-position: -180px -145px;
+}
+.header__btn.talk {
+  background-position: -225px -145px;
+}
+.header__btn.notice {
+  background-position: -93px -59px;
+}
+.header__btn.my {
+  background-position: -90px -145px;
+}/*# sourceMappingURL=common.css.map */
