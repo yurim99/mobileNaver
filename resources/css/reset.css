@@ -44,8 +44,8 @@ html, body{
 #skip-nav a {display: block; position: absolute; left: 0; top: -100px; width: 100%; height: 30px; text-align: center; background-color:#ddd; }
 #skip-nav a:focus-visible,
 #skip a:active {position: absolute; top: 0; z-index: 1000; height: auto; padding: 10px 0; font-size: 1.8rem; font-weight: 700; color: #fff; background-color: #0086F0;}
-
+/* 
 *:focus-visible {
 	outline: 2px dotted red;
 	outline-offset: -2px;
-}		
+}		 */

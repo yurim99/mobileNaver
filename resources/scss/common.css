@@ -20,6 +20,11 @@ body {
   background-image: url(../images/main/main_icon.png);
   background-size: 323px 185px;
   background-repeat: no-repeat;
+  border-radius: 8px;
+  transition: all 0.15s ease-in;
+}
+.header__btn:hover {
+  background-color: #e0e2e3;
 }
 .header__btn.all-menu {
   background-position: -135px -145px;
@@ -49,14 +54,31 @@ body {
 }
 .main-search {
   padding: 0 20px;
+  margin: 0 auto;
   width: 100%;
   max-width: 570px;
-  margin: 0 auto;
+  position: relative;
 }
-.main-search__logo {
-  background: linear-gradient(135deg, #03cf5d 0, #03c75a 100%);
+.main-search-box {
+  border: 1px solid transparent;
+  background-image: linear-gradient(#fff, #fff), linear-gradient(135deg, #03cf5d 0, #03c75a 100%);
+  box-shadow: 0 5px 10px 0 rgba(117, 145, 181, 0.12);
+  background-clip: content-box, border-box;
+  border-radius: 55px;
+  overflow: hidden;
+}
+.main-search__logo, .main-search-tool-btn {
+  transform: translateY(-50%);
   width: 40px;
   height: 40px;
+  position: absolute;
+  top: 50%;
+}
+.main-search__logo {
+  position: absolute;
+  left: 30px;
+  background: linear-gradient(135deg, #03cf5d 0, #03c75a 100%);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
 }
 .main-search__logo::before {
   content: "";
@@ -65,14 +87,45 @@ body {
   background-size: 323px 185px;
   background-repeat: no-repeat;
   background-position: -270px -145px;
+  width: 40px;
+  height: 40px;
 }
 .main-search__input {
   width: 100%;
   height: 50px;
   box-sizing: border-box;
-  border-radius: 50px;
+  padding: 0 55px;
+  border: 0;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  color: #1e1e23;
+}
+.main-search__input:focus-visible {
+  outline: 0;
+}
+.main-search__input::-moz-placeholder {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  color: #ccc;
+}
+.main-search__input::placeholder {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  color: #ccc;
 }
 .main-search-tool-btn {
-  width: 100%;
-  height: 50px;
+  position: absolute;
+  right: 26px;
+  background-image: url(../images/main/main_icon.png);
+  background-size: 323px 185px;
+  background-repeat: no-repeat;
+  background-position: 0 -145px;
+  border-radius: 50%;
+}
+.main-search-tool-btn:hover {
+  background-color: #eee;
+  transition: all 0.15s ease-in;
 }/*# sourceMappingURL=common.css.map */
