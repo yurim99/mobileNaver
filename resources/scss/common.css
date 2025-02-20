@@ -14,7 +14,12 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+.header > div {
+  display: flex;
+  align-items: center;
+}
 .header__btn {
+  display: block;
   width: 40px;
   height: 40px;
   background-image: url(../images/main/main_icon.png);
@@ -24,7 +29,7 @@ body {
   transition: all 0.15s ease-in;
 }
 .header__btn:hover {
-  background-color: #e0e2e3;
+  box-shadow: #e0e2e3 0px 5px 5px -5px inset, #cecece 0px 18px 36px -18px inset;
 }
 .header__btn.all-menu {
   background-position: -135px -145px;
@@ -124,8 +129,74 @@ body {
   background-repeat: no-repeat;
   background-position: 0 -145px;
   border-radius: 50%;
+  transition: all 0.15s ease-in;
 }
 .main-search-tool-btn:hover {
-  background-color: #eee;
-  transition: all 0.15s ease-in;
+  box-shadow: #e0e2e3 0px 5px 5px -5px inset, #cecece 0px 18px 36px -18px inset;
+}
+.main-link {
+  display: block;
+  width: 50px;
+  max-width: 50px;
+  flex: 1 1 25%;
+  position: relative;
+}
+.main-link::before, .main-link::after {
+  content: "";
+  display: block;
+  background-image: url(../images/main/main_icon.png);
+  background-size: 323px 185px;
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+}
+.main-link::before {
+  background-position: -163px -21px;
+}
+.main-link::after {
+  background-position: -218px -21px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.main-link__img {
+  width: 44px;
+  height: 44px;
+  position: absolute;
+  top: 3px;
+  left: 50%;
+  z-index: 1;
+  transform: translateX(-50%);
+}
+.main-link__tit {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: #1e1e23;
+  text-align: center;
+}
+.main-link-stage {
+  padding: 24px 20px 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  width: 100%;
+  max-width: 306px;
+  margin: 0 auto;
+}
+.main-ad {
+  margin: 0 auto;
+  padding-top: 52px;
+  width: 100%;
+  min-width: 320px;
+  max-width: 375px;
+  height: 100px;
+}
+.main-ad > img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 100%;
 }/*# sourceMappingURL=common.css.map */

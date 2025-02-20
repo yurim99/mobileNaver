@@ -6,12 +6,13 @@
     text-align: $ta;
 }
 
-@mixin display($d: null, $jc: null, $ai: null, $fd: null, $fw: null) {
+@mixin display($d: null, $jc: null, $ai: null, $fd: null, $fw: null, $g:null) {
     display: $d;
     justify-content: $jc;
     align-items: $ai;
     flex-direction: $fd;
     flex-wrap: $fw;
+    gap: $g;
 }
 
 @mixin size($w: null, $minw: null, $maxw: null, $h: null, $minh: null, $maxh: null) {
@@ -32,9 +33,9 @@
     z-index: $z;
 }
 
-@mixin bg {
-    background-repeat: no-repeat;
-    background-size: contain;
+@mixin deco {
+    content: '';
+    display: block;
 }
 
 $transition: all .15s ease-in;
@@ -51,21 +52,25 @@ body {
 }
 
 .header {
-
     @include size($w: 100%, $minw: 320px, $maxw: 1024px);
     box-sizing: border-box;
     margin: 0 auto;
     padding: .8rem 1rem;
     @include display($d: flex, $jc: space-between, $ai: center);
+    
+    &>div {
+        @include display($d: flex, $ai: center);
+    }
 
     &__btn {
+        display: block;
         @include size($w: 40px, $h: 40px);
         @include head-bg-img;
         border-radius: 8px;
         transition: $transition;
 
         &:hover {
-            background-color: #e0e2e3;
+            box-shadow: #e0e2e3 0px 5px 5px -5px inset, #cecece 0px 18px 36px -18px inset;
         }
 
         &.all-menu {
@@ -129,8 +134,7 @@ body {
         }
 
         &__logo::before {
-            content: '';
-            display: block;
+            @include deco;
             @include head-bg-img;
             background-position: -270px -145px;
             @include size($w: 40px, $h: 40px);
@@ -156,11 +160,60 @@ body {
             @include head-bg-img;
             background-position: 0 -145px;
             border-radius: 50%;
+            transition: $transition;
 
             &:hover {
-                background-color: #eee;
-                transition: $transition;
+                box-shadow: #e0e2e3 0px 5px 5px -5px inset, #cecece 0px 18px 36px -18px inset;
             }
+        }
+    }
+
+    &-link {
+        $link-size: 50px;
+        display: block;
+        @include size($w: $link-size, $maxw: $link-size);
+        flex: 1 1 25%;
+        position: relative;
+        
+        &::before,
+        &::after {
+            @include deco;
+            @include head-bg-img;
+            @include size($w: $link-size, $h: $link-size);
+        }
+
+        &::before {
+            background-position:-163px -21px;
+        }
+        &::after {
+            background-position:-218px -21px;
+            @include position( $p:absolute, $t:0, $l:0);
+        }
+        &__img {
+            @include size($w: 44px, $h: 44px);
+            @include position( $p:absolute, $t: 3px, $l:50%, $z:1);
+            transform: translateX(-50%)
+        }
+        &__tit {
+            @include txt(12px, 500, 16px,#1e1e23, center);
+        }
+
+        &-stage {
+            padding: 24px 20px 0;
+            box-sizing: border-box;
+            @include display($d: flex, $jc: center, $ai: center,$fw:wrap, $g: 8px 22px);
+            @include size($w: 100%, $maxw: calc($link-size*4 + 22px*3 + 40px));
+            margin: 0 auto;
+        }
+    }
+
+    &-ad {
+        margin: 0 auto;
+        padding-top: 52px;
+        @include size($w: 100%, $minw: 320px, $maxw: 375px,$h: 100px);
+        &>img {
+            object-fit: contain;
+            width: 100%;
         }
     }
 }
