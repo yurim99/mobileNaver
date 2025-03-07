@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/font.css">
     <link rel="stylesheet" href="../scss/common.css">
+    <script  src="../js/main.js"></script>
 </head>
 
 <body>
@@ -65,10 +66,35 @@
                 <img class="main-link__img" src="../images/main/icon-main-8.png" alt="">
             </a>
         </div>
-        <div class="main-ad">
+        <a href="javascript:void(0)" class="main-ad">
             <img src="../images/main/ad-img.png" alt="">
-        </div>
+        </a>
     </main>
+    <section class="feed">
+        <div class="feed-box feed-weather">
+            <div class="feed-weather__icon sun"></div>
+            <p class="feed-weather__data">2.2°</p>
+            <p class="feed-weather__area">부산</p>
+        </div>
+        <div class="feed-box feed-popular">
+            <div class="feed-popular__top">
+                <p class="feed-popular__tit">요즘 인기 콘텐츠</p>
+                <div class="feed-popular__menu">
+                    <button class="feed-popular__btn">전체</button>
+                    <div class="feed-popular__list">
+                        <button id="feedAgeAll" class="feed-popular__age active">전체</button>
+                        <button id="feedAge10" class="feed-popular__age">10대</button>
+                        <button id="feedAge20" class="feed-popular__age">20대</button>
+                        <button id="feedAge30" class="feed-popular__age">30대</button>
+                        <button id="feedAge40" class="feed-popular__age">40대</button>
+                        <button id="feedAge50" class="feed-popular__age">50대</button>
+                        <button id="feedAge60" class="feed-popular__age">60대이상</button>
+                    </div>
+                </div>
+            </div>
+            <a href="javascript:void(0)" class="feed__link"></a>
+        </div>
+    </section>
 </body>
 
 </html>

@@ -37,6 +37,14 @@
     content: '';
     display: block;
 }
+@mixin show {
+    opacity: 1;
+    visibility: visible;
+}
+@mixin hide {
+    opacity: 0;
+    visibility: hidden;
+}
 
 $transition: all .15s ease-in;
 
@@ -208,8 +216,8 @@ body {
     }
 
     &-ad {
-        margin: 0 auto;
-        padding-top: 52px;
+        display: block;
+        margin: 50px auto 0;
         @include size($w: 100%, $minw: 320px, $maxw: 375px,$h: 100px);
         &>img {
             object-fit: contain;
@@ -217,3 +225,115 @@ body {
         }
     }
 }
+
+
+@mixin feed-icon {
+    background-image: url(../images/common/icon-common.png);
+    background-size: 343px 312px;
+    background-repeat: no-repeat;
+}
+
+.feed {
+    @include size($w: 100%, $minw: 320px, $maxw: 1024px);
+    @include display($d: flex, $jc: center, $ai: center, $fd:column, $g:8px);
+    padding: 8px 8px 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+
+    &-box {
+        background-color: #fff;
+        width: 100%;
+        border-radius: 12px;
+        box-sizing: border-box;
+        box-shadow: 0 1px 4px 0 #0000000f;
+    }
+
+    &-weather {
+        height: 48px;
+        padding: 8px;
+        @include display($d: flex, $ai: center, $g:2px);
+        &__icon {
+            $icon-size: 36px;
+            @include size($w: $icon-size, $h: $icon-size);
+            position: relative;
+            &::before {
+                @include deco;
+                background-image: url(../images/common/icon-weather.png);
+                background-size: 484px 459px;
+                background-repeat: no-repeat;
+                @include size($w: 42px, $h: 42px);
+                @include position($p: absolute, $t: 50%, $l:50%);
+                transform: translate(-50%, -50%) scale(.5454);
+            }
+            &.sun::before {
+                background-position: -267px -46px;
+            }
+        }
+        &>p {
+            @include txt($fs: 14px, $fw: 700, $c:#303038);
+        }
+    }
+
+    &-popular {
+        &__top {
+            @include size($w: 100%, $h: 50px);
+            padding-left:16px;
+            @include display($d: flex, $jc: space-between, $ai: center);
+            border-bottom: 1px solid #ddd;
+            transition: $transition;
+        }
+        &__tit {
+            @include txt($fs: 16px, $fw: 700, $c: #1c1c1c);
+        }
+        &__btn {
+            padding: 10px 16px;
+            @include display($d: flex, $ai: center);
+            &::after {
+                @include deco;
+                @include feed-icon;
+                @include size($w: 16px, $h: 16px);
+                background-position: -242px -275px;
+                transform: rotate(90deg);
+                margin-top: 2px;
+                transition: $transition;
+            }
+            &.active::after {
+                transform: rotate(-90deg);
+            }
+        }
+        &__list {      
+            @include size($w: 200px, $h: 165px);
+            border: 1px solid #3283fd66;
+            background-color: #fff;
+            @include position($p:absolute, $r:20px,$z:1);
+            @include display($d:flex, $fw: wrap);
+            border-radius: 6px;
+            overflow: hidden;
+            @include hide;
+            
+            &.active {
+                @include show;
+            }
+        }
+        &__age {
+            box-sizing: border-box;
+            flex: 1 1 50%;
+            max-width: 50%;
+            border-style: solid;
+            border-width: 0;
+            border-color: #eee;
+            &:nth-child(odd) {
+                border-right-width: 1px;
+            }
+            &:not(:last-child) {
+                border-bottom-width: 1px;
+            }
+        }
+    }
+    &__link {
+        display: block;
+        padding: 10px;
+    }
+}
+
+
