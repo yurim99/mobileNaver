@@ -6,6 +6,10 @@ body {
   position: relative;
 }
 
+body:has(.header-search-stage.active) {
+  overflow: hidden;
+}
+
 input {
   border: 0;
   box-sizing: border-box;
@@ -45,7 +49,7 @@ input::placeholder {
   display: block;
   width: 40px;
   height: 40px;
-  background-image: url(../images/main/main_icon.png);
+  background-image: url(../images/common/icon-header.png);
   background-repeat: no-repeat;
   background-size: 323px 185px;
   border-radius: 8px;
@@ -105,10 +109,10 @@ input::placeholder {
   content: "";
   display: block;
   position: absolute;
-  top: calc(50% - 4px);
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-image: url(../images/main/main_icon.png);
+  background-image: url(../images/common/icon-header.png);
   background-repeat: no-repeat;
   background-size: 323px 185px;
 }
@@ -141,9 +145,234 @@ input::placeholder {
   height: 100%;
   padding: 0 10px;
   font-size: 18px;
+  font-weight: 700;
+}
+.header-search__input::-moz-placeholder {
+  font-size: 18px;
+  font-weight: 400;
+}
+.header-search__input::placeholder {
+  font-size: 18px;
+  font-weight: 400;
 }
 .header-search__center {
   background-color: #fff;
+  min-height: 160px;
+  box-sizing: border-box;
+}
+.header-search__center:has(.header-search__base.hide) {
+  min-height: 0;
+}
+.header-search__center .header-search__base {
+  padding: 12px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 160px;
+}
+.header-search__center .header-search__base p {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 25px;
+}
+.header-search__center .header-search__base p.sub {
+  font-size: 14px;
+  color: #939396;
+}
+.header-search__center .header-search__base.hide {
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  min-height: 0;
+  padding: 0;
+}
+.header-search__bottom {
+  background-color: #fff;
+  border-top: 1px solid #F5F5F8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px;
+  height: 44px;
+}
+.header-search__bottom > div {
+  display: flex;
+  align-items: center;
+}
+.header-search__bottom .search-control-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 7px;
+  height: 44px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+  color: #939396;
+  position: relative;
+}
+.header-search__bottom .search-control-btn span {
+  display: none;
+}
+.header-search__bottom .search-control-btn.on .on {
+  display: block;
+}
+.header-search__bottom .search-control-btn.off .off {
+  display: block;
+}
+.header-search__bottom .search-control-btn + .search-control-btn::before {
+  content: "";
+  display: block;
+  background-color: #ddd;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: -2px;
+  transform: translateY(-50%);
+}
+.header-search__bottom a.search-control-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-histroy__lists {
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+.search-histroy__lists.show {
+  padding: 12px 0;
+  opacity: 1;
+  visibility: visible;
+  height: auto;
+}
+.search-histroy__lists li {
+  padding-left: 52px;
+  padding-right: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.search-histroy__lists li::before {
+  content: "";
+  display: block;
+  background-image: url(../images/common/icon-country.png);
+  background-repeat: no-repeat;
+  background-size: 352px 312px;
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-position: -228px -132px;
+}
+.search-histroy__lists li:has(.web)::before {
+  background-position: -4px -197px;
+}
+.search-histroy__lists li + li {
+  margin-top: 8px;
+}
+.search-histroy__link {
+  display: block;
+  height: 38px;
+  position: relative;
+}
+.search-histroy__link * {
+  font-size: 17px;
+  line-height: 19px;
+}
+.search-histroy__copy {
+  width: 29px;
+  height: 38px;
+  position: relative;
+}
+.search-histroy__copy::before {
+  content: "";
+  display: block;
+  background-image: url(../images/common/icon-country.png);
+  background-repeat: no-repeat;
+  background-size: 352px 312px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background-position: -48px -293px;
+}
+
+.keyword-auto-stage {
+  padding: 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #F5F5F8;
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+}
+.keyword-auto-stage.show {
+  opacity: 1;
+  visibility: visible;
+  height: 44px;
+}
+.keyword-auto-stage p {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+  color: #939396;
+}
+.keyword-auto-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.switch-stage {
+  width: 35px;
+  height: 21px;
+  border-radius: 25px;
+  transition: all 0.15s ease-in;
+  background-color: #c5c5c7;
+  position: relative;
+}
+.switch-stage::before {
+  content: "";
+  display: block;
+  width: 19px;
+  height: 19px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  transition: all 0.15s ease-in;
+}
+.switch-stage:has(:checked) {
+  background-color: #03aa5a;
+}
+.switch-stage:has(:checked)::before {
+  position: absolute;
+  left: 15px;
+}
+.switch__check {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.switch__label {
+  display: block;
+  width: 35px;
+  height: 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .main {
@@ -184,7 +413,7 @@ input::placeholder {
 .main-search__logo::before {
   content: "";
   display: block;
-  background-image: url(../images/main/main_icon.png);
+  background-image: url(../images/common/icon-header.png);
   background-repeat: no-repeat;
   background-size: 323px 185px;
   background-position: -270px -145px;
@@ -203,7 +432,7 @@ input::placeholder {
 .main-search-tool-btn {
   position: absolute;
   right: 26px;
-  background-image: url(../images/main/main_icon.png);
+  background-image: url(../images/common/icon-header.png);
   background-repeat: no-repeat;
   background-size: 323px 185px;
   background-position: 0 -145px;
@@ -223,7 +452,7 @@ input::placeholder {
 .main-link::before, .main-link::after {
   content: "";
   display: block;
-  background-image: url(../images/main/main_icon.png);
+  background-image: url(../images/common/icon-header.png);
   background-repeat: no-repeat;
   background-size: 323px 185px;
   width: 50px;

@@ -1,3 +1,4 @@
+//incolue
 @mixin txt($fs: null, $fw: null, $lh: null, $c: null, $ta: null) {
     font-size: $fs;
     font-weight: $fw;
@@ -33,6 +34,25 @@
     z-index: $z;
 }
 
+
+/////////// 변수 설정 ///////////
+$transition: all .15s ease-in;
+$gray100: #fff;
+$gray99: #fafafb;
+$gray95: #F7F7F9;
+$gray90: #F5F5F8;
+$gray80: #E9E9EC;
+$gray70: #D9D9DC;
+$gray60: #c5c5c7;
+$gray50: #939396;
+$gray40: #77777A;
+$gray30: #555558;
+$gray20: #444447;
+$gray10: #222225;
+$gray0: #000;
+$green-base: #03aa5a;
+
+/////////// 공통 class ///////////
 @mixin deco {
     content: '';
     display: block;
@@ -46,14 +66,19 @@
     visibility: hidden;
 }
 
-$transition: all .15s ease-in;
-
 @mixin head-bg-img {
-    background-image: url(../images/main/main_icon.png);
+    background-image: url(../images/common/icon-header.png);
     background-repeat: no-repeat;
     background-size: 323px 185px;
 }
 
+@mixin country-img {
+    background-image: url(../images/common/icon-country.png);
+    background-repeat: no-repeat;
+    background-size: 352px 312px;
+}
+
+/////////// 공통 ///////////
 body {
     background-color: #f4f6f8;
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", Arial, sans-serif;
@@ -66,6 +91,7 @@ body:has(.header-search-stage.active) {
     overflow: hidden;
 }
 
+/////////// form ///////////
 input {
     border: 0;
     box-sizing: border-box;
@@ -77,6 +103,7 @@ input {
     }
 }
 
+/////////// 시멘틱 태그 ///////////
 .header {
     @include size($w: 100%, $minw: 320px, $maxw: 1024px);
     box-sizing: border-box;
@@ -150,7 +177,7 @@ input {
 
             &::before {
                 @include deco;
-                @include position($p:absolute, $t:calc(50% - 4px), $l:50%);
+                @include position($p:absolute, $t:50%, $l:50%);
                 transform: translate(-50%, -50%);
                 @include head-bg-img;
             }
@@ -184,30 +211,40 @@ input {
             }
         }
         &__center {
-            $center-min-height: 135px;
+            $center-min-height: 160px;
             background-color: #fff;
-            padding: 12px 16px;
             min-height: $center-min-height;
             box-sizing: border-box;
             
+            &:has(.header-search__base.hide) {
+                min-height: 0;
+            }
             .header-search__base {
+                padding: 12px 16px;
                 @include display($d:flex, $fd: column, $jc:center,$ai:center);
                 height: $center-min-height;
-                
+
                 p {
                     @include txt($fs: 16px, $fw: 500, $lh: 25px);
                     
                     &.sub {
-                        @include txt($fs: 14px,$c:#939396);
+                        @include txt($fs: 14px, $c:$gray50);
                     }
                 }
 
+                &.hide {
+                    @include hide;
+                    height: 0;
+                    min-height: 0;
+                    padding: 0;
+                }
             }
+
         }
 
         &__bottom {
             background-color: #fff;
-            border-top: 1px solid #F5F5F8;
+            border-top: 1px solid $gray90;
             @include display($d: flex, $ai: center, $jc: space-between);
             padding: 0 8px;
             height: 44px;
@@ -219,7 +256,7 @@ input {
                 @include display($d: flex, $ai: center, $g:4px);
                 padding: 0 7px;
                 height: 44px;
-                @include txt($fs: 16px, $lh:16px, $fw: 500, $c:#939396);
+                @include txt($fs: 16px, $lh:16px, $fw: 500, $c:$gray50);
                 position: relative;
                 span {
                     display: none;
@@ -230,16 +267,14 @@ input {
                 &.off .off {
                     display: block;
                 }
-            }
-
-            .search-control-btn+.search-control-btn::before {
-                @include deco;
-                background-color: #ddd;
-                @include size($w: 3px, $h:3px);
-                border-radius: 50%;
-                @include position( $p:absolute, $t:50%, $l:-2px);
-                transform: translateY(-50%);
-                
+                &+.search-control-btn::before {
+                    @include deco;
+                    background-color: #ddd;
+                    @include size($w: 3px, $h:3px);
+                    border-radius: 50%;
+                    @include position( $p:absolute, $t:50%, $l:-2px);
+                    transform: translateY(-50%); 
+                }
             }
 
             a.search-control-btn {
@@ -247,4 +282,124 @@ input {
             }
         }
     }
+}
+
+.search-histroy {
+    &__lists {
+        height: 0;
+        @include hide;
+
+        &.show {
+            padding: 12px 0;
+            @include show;
+            height: auto;
+        }
+        & li {
+            padding-left: calc(16px + 36px);
+            padding-right: 16px;
+            @include display($d:flex, $ai:center);
+            position: relative;
+
+            &::before {
+                @include deco;
+                @include country-img();
+                @include position($p:absolute, $l:16px, $t:50%);
+                transform: translateY(-50%);
+                @include size($h: 24px, $w: 24px);
+                background-position: -228px -132px;
+            }
+            &:has(.web)::before {
+                background-position: -4px -197px;
+            }
+            &+li {
+                margin-top: 8px;
+            }
+        }
+
+    }
+    &__link {
+      display: block;
+      position: relative;
+      
+      & * {
+          @include txt($fs: 17px, $lh:19px);
+          padding: 9px 0;
+        }
+    }
+    &__copy {
+        @include size($h: 38px, $w:29px);
+        position: relative;
+        &::before {
+            @include deco;
+            @include country-img();
+            @include position($p:absolute, $l:50%, $t:50%);
+            transform: translate(-50%, -50%);
+            @include size($h: 12px, $w: 12px);
+            background-position: -48px -293px;
+        }
+    }
+}
+
+.keyword-auto {
+    &-stage {
+        padding: 0 16px;
+        @include display($d: flex, $ai: center, $jc:space-between);
+        border-top: 1px solid $gray90;
+        @include hide;
+        height: 0;
+        
+        &.show {
+            @include show;
+            height: 44px;
+        }
+
+        p {
+            @include txt($fs: 16px, $lh:16px, $fw: 500, $c:$gray50);
+        }
+    }
+    &-wrap {
+        @include display($d: flex, $ai: center, $jc:space-between);
+    }
+    // &__info {
+
+    // }
+}
+
+.switch {
+    &-stage {
+        @include size( $w:35px, $h:21px);
+        border-radius: 25px;
+        transition:  $transition;
+        background-color: $gray60;
+        position: relative;
+        
+        &::before {
+            @include deco;
+            @include size( $w:19px, $h:19px);
+            background-color: #fff;
+            border-radius: 50%;
+            @include position( $p:absolute, $t:1px, $l: 1px);
+            transition: $transition;
+        }
+
+        &:has(:checked) {
+            background-color: $green-base;
+            
+            &::before {
+                @include position( $l: 15px);
+            }
+        }
+        
+    }
+    &__check {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+    &__label {
+        display: block;
+        @include size( $w:35px, $h:25px);
+        @include position( $p:absolute,$t:0, $l: 0 );
+    }
+    
 }

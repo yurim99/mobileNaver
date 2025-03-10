@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
     headerBackBtn.addEventListener('click', hideSearchStage)
     searchClose.addEventListener('click', hideSearchStage);
     
+
     //search
     const searchAutoSave = document.getElementById('searchAutoSave');
     
@@ -33,6 +34,22 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             searchAutoSave.classList.remove('off')
             searchAutoSave.classList.add('on')
+        }
+    })
+
+    const headerSearchBase = document.querySelector('.header-search__base');
+    const searchHistroyList = document.querySelector('.search-histroy__lists');
+    const keywordAutoWrap = document.querySelector('.keyword-auto-stage');
+    
+    headerSearchInput.addEventListener('input', function(){
+        if(headerSearchInput.value.trim()  !=="") {
+            headerSearchBase.classList.add('hide')
+            searchHistroyList.classList.add('show')
+            keywordAutoWrap.classList.add('show')
+        } else {
+            headerSearchBase.classList.remove('hide')
+            searchHistroyList.classList.remove('show')
+            keywordAutoWrap.classList.remove('show')
         }
     })
 })
