@@ -17,7 +17,7 @@
 
     <header class="header">
         <div class="header__left">
-            <button class="header__btn all-menu" title="전체메뉴"></button>
+            <a href="javascript:void(0)" class="header__btn all-menu" title="전체메뉴"></a>
             <a href="javascript:void(0)" class="header__btn pay" title="네이버 페이"></a>
             <a href="javascript:void(0)" class="header__btn shopping-cart" title="네이버 장바구니"></a>
         </div>
@@ -27,10 +27,31 @@
             <a href="javascript:void(0)" class="header__btn my" title="네이버 내정보"></a>
         </div>
         <div class="header-search-stage">
-            <div class="header-search-wrap">
+            <div class="header-search__top">
                 <button class="header__btn header-search__btn back" title="뒤로가기"></button>
                 <input class="header-search__input" type="text" name="" id="" placeholder="검색어를 입력해주세요.">
-                <button class="header__btn header-search__btn search" title=""></button>
+                <button class="header-search__btn search" title="검색"></button>
+            </div>
+            <div class="header-search__center">
+                <!-- st 기본 - 검색기록이 없을 경우 -->
+                 <div class="header-search__base">
+                     <p>최근 검색어 내역이 없습니다.</p>
+                     <p class="sub">설정이 초기화 된다면 도움말을 확인해주세요.</p>
+                 </div>
+                <!-- ed 기본 - 검색기록이 없는 경우 -->
+
+                <!-- <ul class="search-histroy__lists">
+                    <li>
+                    </li>
+                </ul> -->
+            </div>
+            <div class="header-search__bottom">
+                <div>
+                    <button id="searchAutoSave" class="search-control-btn on">자동저장 <span class="on">끄기</span><span class="off">켜기</span></button>
+                    <a href="https://help.naver.com/service/5627/contents/4029?lang=ko" 
+                        class="search-control-btn">도움말</a>
+                </div>
+                <button class="search-control-btn close">닫기</button>
             </div>
         </div>
     </header>

@@ -54,13 +54,16 @@ $transition: all .15s ease-in;
     background-size: 323px 185px;
 }
 
-
 body {
     background-color: #f4f6f8;
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", Arial, sans-serif;
     height: 100%;
     min-height: 100vh;
     position: relative;
+}
+
+body:has(.header-search-stage.active) {
+    overflow: hidden;
 }
 
 input {
@@ -130,12 +133,12 @@ input {
             background-color: #f0f0f3;
             @include hide;
             transition: $transition;
-            
+
             &.active {
                 @include show;
             }
         }
-        &-wrap {
+        &__top {
             @include size($h:56px, $w:100%);
             @include display($d: flex, $ai: center);
             background-color: #fff;
@@ -147,7 +150,7 @@ input {
 
             &::before {
                 @include deco;
-                @include position($p:absolute, $t:50%, $l:50%);
+                @include position($p:absolute, $t:calc(50% - 4px), $l:50%);
                 transform: translate(-50%, -50%);
                 @include head-bg-img;
             }
@@ -173,7 +176,75 @@ input {
         }
         &__input {
             @include size($h:100%, $w:calc(100% - 100px));
-            padding: 10px 0;
+            padding: 0 10px;
+            @include txt($fs:18px,$fw:700);
+            
+            &::placeholder {
+                @include txt($fs:18px, $fw:400);
+            }
+        }
+        &__center {
+            $center-min-height: 135px;
+            background-color: #fff;
+            padding: 12px 16px;
+            min-height: $center-min-height;
+            box-sizing: border-box;
+            
+            .header-search__base {
+                @include display($d:flex, $fd: column, $jc:center,$ai:center);
+                height: $center-min-height;
+                
+                p {
+                    @include txt($fs: 16px, $fw: 500, $lh: 25px);
+                    
+                    &.sub {
+                        @include txt($fs: 14px,$c:#939396);
+                    }
+                }
+
+            }
+        }
+
+        &__bottom {
+            background-color: #fff;
+            border-top: 1px solid #F5F5F8;
+            @include display($d: flex, $ai: center, $jc: space-between);
+            padding: 0 8px;
+            height: 44px;
+            
+            &>div {
+                @include display($d: flex, $ai: center);
+            }
+            .search-control-btn {
+                @include display($d: flex, $ai: center, $g:4px);
+                padding: 0 7px;
+                height: 44px;
+                @include txt($fs: 16px, $lh:16px, $fw: 500, $c:#939396);
+                position: relative;
+                span {
+                    display: none;
+                }
+                &.on .on {
+                    display: block;
+                }
+                &.off .off {
+                    display: block;
+                }
+            }
+
+            .search-control-btn+.search-control-btn::before {
+                @include deco;
+                background-color: #ddd;
+                @include size($w: 3px, $h:3px);
+                border-radius: 50%;
+                @include position( $p:absolute, $t:50%, $l:-2px);
+                transform: translateY(-50%);
+                
+            }
+
+            a.search-control-btn {
+                @include display($d: flex, $ai: center, $jc: center);
+            }
         }
     }
 }
