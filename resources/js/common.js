@@ -40,16 +40,25 @@ document.addEventListener("DOMContentLoaded", function() {
     const headerSearchBase = document.querySelector('.header-search__base');
     const searchHistroyList = document.querySelector('.search-histroy__lists');
     const keywordAutoWrap = document.querySelector('.keyword-auto-stage');
+    const headerSearchDelBtn = document.querySelector('.header-search__btn.delete');
     
+    function initKeywordAutoWrap() {
+        headerSearchBase.classList.remove('hide')
+        searchHistroyList.classList.remove('show')
+        keywordAutoWrap.classList.remove('show')
+    }
+
     headerSearchInput.addEventListener('input', function(){
         if(headerSearchInput.value.trim()  !=="") {
             headerSearchBase.classList.add('hide')
             searchHistroyList.classList.add('show')
             keywordAutoWrap.classList.add('show')
         } else {
-            headerSearchBase.classList.remove('hide')
-            searchHistroyList.classList.remove('show')
-            keywordAutoWrap.classList.remove('show')
+            initKeywordAutoWrap()
         }
+    })
+    headerSearchDelBtn.addEventListener('click', function() {
+        headerSearchInput.value = '';
+        initKeywordAutoWrap()
     })
 })

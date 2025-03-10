@@ -1,4 +1,4 @@
-//incolue
+/************  incolue ************/
 @mixin txt($fs: null, $fw: null, $lh: null, $c: null, $ta: null) {
     font-size: $fs;
     font-weight: $fw;
@@ -35,7 +35,7 @@
 }
 
 
-/////////// 변수 설정 ///////////
+/************  변수 설정 ************/
 $transition: all .15s ease-in;
 $gray100: #fff;
 $gray99: #fafafb;
@@ -52,7 +52,7 @@ $gray10: #222225;
 $gray0: #000;
 $green-base: #03aa5a;
 
-/////////// 공통 class ///////////
+/************  공통 class ************/
 @mixin deco {
     content: '';
     display: block;
@@ -78,7 +78,7 @@ $green-base: #03aa5a;
     background-size: 352px 312px;
 }
 
-/////////// 공통 ///////////
+/************ 공통 ************/
 body {
     background-color: #f4f6f8;
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", Arial, sans-serif;
@@ -91,7 +91,7 @@ body:has(.header-search-stage.active) {
     overflow: hidden;
 }
 
-/////////// form ///////////
+/************ form ************/
 input {
     border: 0;
     box-sizing: border-box;
@@ -103,7 +103,7 @@ input {
     }
 }
 
-/////////// 시멘틱 태그 ///////////
+/************ 시멘틱 태그 ************/
 .header {
     @include size($w: 100%, $minw: 320px, $maxw: 1024px);
     box-sizing: border-box;
@@ -194,15 +194,21 @@ input {
                 &::before {
                     background-color: #03c75a;
                     @include size($w:30px, $h:30px);
-                    @include deco;
                     background-position: -163px -101px;
                     z-index: 1;
                 }
     
             }
+            &.delete {
+                @include size($w:30px, $minw:30px, $h:56px);
+                &::before {
+                    @include size($w:24px, $h:24px);
+                    background-position: -231px -101px;
+                } 
+            }
         }
         &__input {
-            @include size($h:100%, $w:calc(100% - 100px));
+            @include size($h:100%, $w: 100%);
             padding: 0 10px;
             @include txt($fs:18px,$fw:700);
             
