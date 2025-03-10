@@ -1,6 +1,29 @@
 body {
   background-color: #f4f6f8;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", Arial, sans-serif;
+  height: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+input {
+  border: 0;
+  box-sizing: border-box;
+}
+input:focus-visible {
+  outline: 0;
+}
+input::-moz-placeholder {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  color: #ccc;
+}
+input::placeholder {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  color: #ccc;
 }
 
 .header {
@@ -14,7 +37,7 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-.header > div {
+.header__left, .header__right {
   display: flex;
   align-items: center;
 }
@@ -23,7 +46,6 @@ body {
   width: 40px;
   height: 40px;
   background-image: url(../images/main/main_icon.png);
-  background-size: 323px 185px;
   background-repeat: no-repeat;
   border-radius: 8px;
   transition: all 0.15s ease-in;
@@ -48,4 +70,66 @@ body {
 }
 .header__btn.my {
   background-position: -90px -145px;
+}
+.header-search-stage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background-color: #f0f0f3;
+}
+.header-search-wrap {
+  width: 100%;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 1px solid #03c75a;
+}
+.header-search__btn {
+  border-radius: 0;
+  position: relative;
+}
+.header-search__btn::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url(../images/main/main_icon.png);
+  background-repeat: no-repeat;
+  background-size: 323px 185px;
+}
+.header-search__btn.back {
+  width: 50px;
+  min-width: 50px;
+  height: 56px;
+}
+.header-search__btn.back::before {
+  width: 18px;
+  height: 18px;
+  background-position: -297px -76px;
+}
+.header-search__btn.search {
+  width: 40px;
+  min-width: 40px;
+  height: 56px;
+}
+.header-search__btn.search::before {
+  background-color: #03c75a;
+  width: 30px;
+  height: 30px;
+  content: "";
+  display: block;
+  background-position: -163px -101px;
+  z-index: 1;
+}
+.header-search__input {
+  width: calc(100% - 100px);
+  height: 100%;
+  padding: 10px 0;
 }/*# sourceMappingURL=common.css.map */

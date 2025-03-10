@@ -48,15 +48,29 @@
 
 $transition: all .15s ease-in;
 
+@mixin head-bg-img {
+    background-image: url(../images/main/main_icon.png);
+    background-repeat: no-repeat;
+}
+
+
 body {
     background-color: #f4f6f8;
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", Arial, sans-serif;
+    height: 100%;
+    min-height: 100vh;
+    position: relative;
 }
 
-@mixin head-bg-img {
-    background-image: url(../images/main/main_icon.png);
-    background-size: 323px 185px;
-    background-repeat: no-repeat;
+input {
+    border: 0;
+    box-sizing: border-box;
+    &:focus-visible {
+        outline: 0;
+    }
+    &::placeholder {
+        @include txt($fs: 16px, $lh: 22px, $fw: 500, $c: #ccc);
+    }
 }
 
 .header {
@@ -66,7 +80,8 @@ body {
     padding: .8rem 1rem;
     @include display($d: flex, $jc: space-between, $ai: center);
     
-    &>div {
+    &__left,
+    &__right {
         @include display($d: flex, $ai: center);
     }
 
@@ -104,6 +119,54 @@ body {
         &.my {
             background-position: -90px -145px;
         }
+    }
 
+    &-search {
+        &-stage {
+            @include position($p:fixed, $t: 0,$l:0, $z:9);
+            @include size($h:100%, $minh: 100vh, $w:100%);
+            background-color: #f0f0f3;
+        }
+        &-wrap {
+            @include size($h:56px, $w:100%);
+            @include display($d: flex, $ai: center);
+            background-color: #fff;
+            border-bottom: 1px solid #03c75a;
+        }
+        &__btn {
+            border-radius: 0;
+            position: relative;
+
+            &::before {
+                @include deco;
+                @include position($p:absolute, $t:50%, $l:50%);
+                transform: translate(-50%, -50%);
+                @include head-bg-img;
+                background-size: 323px 185px;
+            }
+            
+            &.back {
+                @include size($w:50px, $minw: 50px, $h:56px);
+                &::before {
+                    @include size($w:18px, $h:18px);
+                    background-position: -297px -76px;
+                }
+            }
+            &.search {
+                @include size($w:40px, $minw: 40px, $h:56px);
+                &::before {
+                    background-color: #03c75a;
+                    @include size($w:30px, $h:30px);
+                    @include deco;
+                    background-position: -163px -101px;
+                    z-index: 1;
+                }
+    
+            }
+        }
+        &__input {
+            @include size($h:100%, $w:calc(100% - 100px));
+            padding: 10px 0;
+        }
     }
 }

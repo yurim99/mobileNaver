@@ -42,17 +42,8 @@
 
         &__input {
             @include size($w: 100%, $h: 50px);
-            box-sizing: border-box;
             padding: 0 55px;
-            border: 0;
-            // @include txt($fs: 18px, $lh: 22px, $fw: 600, $c: #1e1e23);
-
-            &:focus-visible {
-                outline: 0;
-            }
-            &::placeholder {
-                // @include txt($fs: 16px, $lh: 22px, $fw: 500, $c: #ccc);
-            }
+            @include txt($fs: 18px, $lh: 22px, $fw: 600, $c: #1e1e23);
         }
 
         &-tool-btn {
@@ -60,7 +51,7 @@
             @include head-bg-img;
             background-position: 0 -145px;
             border-radius: 50%;
-            // transition: $transition;
+            transition: $transition;
 
             &:hover {
                 box-shadow: #e0e2e3 0px 5px 5px -5px inset, #cecece 0px 18px 36px -18px inset;
@@ -95,7 +86,7 @@
             transform: translateX(-50%)
         }
         &__tit {
-            // @include txt(12px, 500, 16px,#1e1e23, center);
+            @include txt(12px, 500, 16px,#1e1e23, center);
         }
 
         &-stage {
@@ -163,7 +154,7 @@
             }
         }
         &>p {
-            // @include txt($fs: 14px, $fw: 700, $c:#303038);
+            @include txt($fs: 14px, $fw: 700, $c:#303038);
         }
     }
 
@@ -173,10 +164,10 @@
             padding-left:16px;
             @include display($d: flex, $jc: space-between, $ai: center);
             border-bottom: 1px solid #ddd;
-            // transition: $transition;
+            transition: $transition;
         }
         &__tit {
-            // @include txt($fs: 16px, $fw: 700, $c: #1c1c1c);
+            @include txt($fs: 16px, $fw: 700, $c: #1c1c1c);
         }
         &__btn {
             padding: 10px 16px;
@@ -188,7 +179,7 @@
                 background-position: -242px -275px;
                 transform: rotate(90deg);
                 margin-top: 2px;
-                // transition: $transition;
+                transition: $transition;
             }
             &.active::after {
                 transform: rotate(-90deg);
