@@ -47,6 +47,7 @@ input::placeholder {
   height: 40px;
   background-image: url(../images/main/main_icon.png);
   background-repeat: no-repeat;
+  background-size: 323px 185px;
   border-radius: 8px;
   transition: all 0.15s ease-in;
 }
@@ -71,6 +72,9 @@ input::placeholder {
 .header__btn.my {
   background-position: -90px -145px;
 }
+.header-search {
+  transition: all 0.15s ease-in;
+}
 .header-search-stage {
   position: fixed;
   top: 0;
@@ -80,6 +84,12 @@ input::placeholder {
   height: 100%;
   min-height: 100vh;
   background-color: #f0f0f3;
+  opacity: 0;
+  visibility: hidden;
+}
+.header-search-stage.active {
+  opacity: 1;
+  visibility: visible;
 }
 .header-search-wrap {
   width: 100%;
@@ -174,6 +184,7 @@ input::placeholder {
   display: block;
   background-image: url(../images/main/main_icon.png);
   background-repeat: no-repeat;
+  background-size: 323px 185px;
   background-position: -270px -145px;
   width: 40px;
   height: 40px;
@@ -192,6 +203,7 @@ input::placeholder {
   right: 26px;
   background-image: url(../images/main/main_icon.png);
   background-repeat: no-repeat;
+  background-size: 323px 185px;
   background-position: 0 -145px;
   border-radius: 50%;
   transition: all 0.15s ease-in;
@@ -211,6 +223,7 @@ input::placeholder {
   display: block;
   background-image: url(../images/main/main_icon.png);
   background-repeat: no-repeat;
+  background-size: 323px 185px;
   width: 50px;
   height: 50px;
 }

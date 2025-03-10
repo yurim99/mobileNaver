@@ -51,6 +51,7 @@ $transition: all .15s ease-in;
 @mixin head-bg-img {
     background-image: url(../images/main/main_icon.png);
     background-repeat: no-repeat;
+    background-size: 323px 185px;
 }
 
 
@@ -122,10 +123,17 @@ input {
     }
 
     &-search {
+        
         &-stage {
             @include position($p:fixed, $t: 0,$l:0, $z:9);
             @include size($h:100%, $minh: 100vh, $w:100%);
             background-color: #f0f0f3;
+            @include hide;
+            transition: $transition;
+            
+            &.active {
+                @include show;
+            }
         }
         &-wrap {
             @include size($h:56px, $w:100%);
@@ -142,7 +150,6 @@ input {
                 @include position($p:absolute, $t:50%, $l:50%);
                 transform: translate(-50%, -50%);
                 @include head-bg-img;
-                background-size: 323px 185px;
             }
             
             &.back {
