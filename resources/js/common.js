@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
         headerSearchBase.classList.remove('hide')
         searchHistroyList.classList.remove('show')
         keywordAutoWrap.classList.remove('show')
+        headerSearchDelBtn.classList.remove('active')
     }
 
     headerSearchInput.addEventListener('input', function(){
@@ -53,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
             headerSearchBase.classList.add('hide')
             searchHistroyList.classList.add('show')
             keywordAutoWrap.classList.add('show')
+            headerSearchDelBtn.classList.add('active')
         } else {
             initKeywordAutoWrap()
         }

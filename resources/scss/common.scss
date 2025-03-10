@@ -166,6 +166,7 @@ input {
             }
         }
         &__top {
+            position: relative;
             @include size($h:56px, $w:100%);
             @include display($d: flex, $ai: center);
             background-color: #fff;
@@ -200,10 +201,16 @@ input {
     
             }
             &.delete {
-                @include size($w:30px, $minw:30px, $h:56px);
+                @include hide;
+                @include size($w:30px, $h:56px);
+                @include position($p:absolute, $t:0, $r:50px, $z:1);
                 &::before {
-                    @include size($w:24px, $h:24px);
                     background-position: -231px -101px;
+                    @include size($w:24px, $h:24px);
+                }
+                &.active {
+                    @include size($w:30px, $minw:30px, $h:56px);
+                    @include show;
                 } 
             }
         }
