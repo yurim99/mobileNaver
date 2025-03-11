@@ -6,17 +6,33 @@ document.addEventListener("DOMContentLoaded", function() {
     const headerSearchStage = document.querySelector('.header-search-stage');
     const headerBackBtn = document.querySelector('.header-search__btn.back');
     const searchClose = document.querySelector('.search-control-btn.close');
+    const headerSearchBase = document.querySelector('.header-search__base');
+    const searchHistroyList = document.querySelector('.search-histroy__lists');
+    const contextAutoWrap = document.querySelector('.context-auto-stage');
+    const headerSearchDelBtn = document.querySelector('.header-search__btn.delete');
     
+    function initcontextAutoWrap() {
+        headerSearchBase.classList.remove('hide')
+        searchHistroyList.classList.remove('show')
+        contextAutoWrap.classList.remove('show')
+        headerSearchDelBtn.classList.remove('active')
+    }
+
     function showSearchStage() {
         headerSearchStage.classList.add('active');
         headerSearchInput.focus();
+        headerSearchInput.value = '';
     }
     function hideSearchStage() {
         headerSearchStage.classList.remove('active');
     }
     mainSearchInput.addEventListener('click', showSearchStage)
     headerBackBtn.addEventListener('click', hideSearchStage)
-    searchClose.addEventListener('click', hideSearchStage);
+    searchClose.addEventListener('click', function() {
+        headerSearchStage.classList.remove('active');
+        initcontextAutoWrap();
+        contextAutoPop.classList.remove('active');
+    });
     
 
     //search
@@ -37,17 +53,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     })
 
-    const headerSearchBase = document.querySelector('.header-search__base');
-    const searchHistroyList = document.querySelector('.search-histroy__lists');
-    const contextAutoWrap = document.querySelector('.context-auto-stage');
-    const headerSearchDelBtn = document.querySelector('.header-search__btn.delete');
-    
-    function initcontextAutoWrap() {
-        headerSearchBase.classList.remove('hide')
-        searchHistroyList.classList.remove('show')
-        contextAutoWrap.classList.remove('show')
-        headerSearchDelBtn.classList.remove('active')
-    }
 
     headerSearchInput.addEventListener('input', function(){
         if(headerSearchInput.value.trim()  !=="") {
@@ -64,6 +69,17 @@ document.addEventListener("DOMContentLoaded", function() {
         initcontextAutoWrap()
     }
 )
+    const contextAutocheck = document.getElementById('contextAuto');
     const contextAutoPop = document.querySelector('.context-auto__pop');
-    contextAutoPop
+    const contextAutoPopClose = document.querySelector('.context-pop__close');
+    contextAutocheck.addEventListener("change", function() {
+        if(this.checked) {
+            contextAutoPop.classList.remove('active');
+        }else {
+            contextAutoPop.classList.add('active');
+        }
+    });
+    contextAutoPopClose.addEventListener('click', function() {
+        contextAutoPop.classList.remove('active');
+    })
 })
