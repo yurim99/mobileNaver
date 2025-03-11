@@ -39,13 +39,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const headerSearchBase = document.querySelector('.header-search__base');
     const searchHistroyList = document.querySelector('.search-histroy__lists');
-    const keywordAutoWrap = document.querySelector('.keyword-auto-stage');
+    const contextAutoWrap = document.querySelector('.context-auto-stage');
     const headerSearchDelBtn = document.querySelector('.header-search__btn.delete');
     
-    function initKeywordAutoWrap() {
+    function initcontextAutoWrap() {
         headerSearchBase.classList.remove('hide')
         searchHistroyList.classList.remove('show')
-        keywordAutoWrap.classList.remove('show')
+        contextAutoWrap.classList.remove('show')
         headerSearchDelBtn.classList.remove('active')
     }
 
@@ -53,14 +53,17 @@ document.addEventListener("DOMContentLoaded", function() {
         if(headerSearchInput.value.trim()  !=="") {
             headerSearchBase.classList.add('hide')
             searchHistroyList.classList.add('show')
-            keywordAutoWrap.classList.add('show')
+            contextAutoWrap.classList.add('show')
             headerSearchDelBtn.classList.add('active')
         } else {
-            initKeywordAutoWrap()
+            initcontextAutoWrap()
         }
     })
     headerSearchDelBtn.addEventListener('click', function() {
         headerSearchInput.value = '';
-        initKeywordAutoWrap()
-    })
+        initcontextAutoWrap()
+    }
+)
+    const contextAutoPop = document.querySelector('.context-auto__pop');
+    contextAutoPop
 })

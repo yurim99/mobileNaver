@@ -155,6 +155,7 @@ input::placeholder {
   top: 0;
   right: 50px;
   z-index: 1;
+  transition: all 0.15s ease-in;
 }
 .header-search__btn.delete::before {
   background-position: -231px -101px;
@@ -228,7 +229,8 @@ input::placeholder {
   display: flex;
   align-items: center;
 }
-.header-search__bottom .search-control-btn {
+
+.search-control-btn {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -240,16 +242,16 @@ input::placeholder {
   color: #939396;
   position: relative;
 }
-.header-search__bottom .search-control-btn span {
+.search-control-btn span {
   display: none;
 }
-.header-search__bottom .search-control-btn.on .on {
+.search-control-btn.on .on {
   display: block;
 }
-.header-search__bottom .search-control-btn.off .off {
+.search-control-btn.off .off {
   display: block;
 }
-.header-search__bottom .search-control-btn + .search-control-btn::before {
+.search-control-btn + .search-control-btn::before {
   content: "";
   display: block;
   background-color: #ddd;
@@ -261,12 +263,6 @@ input::placeholder {
   left: -2px;
   transform: translateY(-50%);
 }
-.header-search__bottom a.search-control-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .search-histroy__lists {
   height: 0;
   opacity: 0;
@@ -282,7 +278,7 @@ input::placeholder {
   padding-left: 52px;
   padding-right: 16px;
   display: flex;
-  align-items: center;
+  justify-content: space-between;
   position: relative;
 }
 .search-histroy__lists li::before {
@@ -313,6 +309,10 @@ input::placeholder {
   font-size: 17px;
   line-height: 19px;
   padding: 9px 0;
+  word-break: keep-all;
+}
+.search-histroy__link strong {
+  font-weight: 700;
 }
 .search-histroy__copy {
   width: 29px;
@@ -334,7 +334,14 @@ input::placeholder {
   background-position: -48px -293px;
 }
 
-.keyword-auto-stage {
+a.search-control-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.context-auto-stage {
+  position: relative;
   padding: 0 16px;
   display: flex;
   justify-content: space-between;
@@ -344,21 +351,97 @@ input::placeholder {
   visibility: hidden;
   height: 0;
 }
-.keyword-auto-stage.show {
+.context-auto-stage.show {
   opacity: 1;
   visibility: visible;
   height: 44px;
 }
-.keyword-auto-stage p {
+.context-auto-stage > p {
   font-size: 16px;
   font-weight: 500;
   line-height: 16px;
   color: #939396;
 }
-.keyword-auto-wrap {
+.context-auto-wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 4px;
+}
+.context-auto-wrap > p {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+  color: #939396;
+}
+.context-auto__info {
+  width: 16px;
+  height: 16px;
+  background-image: url(../images/common/icon-country.png);
+  background-repeat: no-repeat;
+  background-size: 352px 312px;
+  background-position: -324px -205px;
+}
+.context-auto__pop {
+  background-color: #fff;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1), 0px 0px 6px 0px rgba(0, 0, 0, 0.05);
+  position: absolute;
+  bottom: 44px;
+  left: 16px;
+  z-index: 1;
+  width: calc(100% - 32px);
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.15s ease-in;
+  opacity: 0;
+  visibility: hidden;
+}
+.context-auto__pop.active {
+  opacity: 1;
+  visibility: visible;
+}
+.context-pop__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+  width: 26px;
+  height: 26px;
+}
+.context-pop__close::before {
+  content: "";
+  display: block;
+  background-image: url(../images/common/icon-country.png);
+  background-repeat: no-repeat;
+  background-size: 352px 312px;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-position: -26px -293px;
+}
+.context-pop__tit {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 17px;
+  color: #000;
+}
+.context-pop__cnt {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #555558;
+  margin-top: 8px;
+}
+.context-pop__link {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #0068c3;
+  margin-top: 4px;
+  display: block;
 }
 
 .switch-stage {

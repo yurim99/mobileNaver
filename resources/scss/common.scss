@@ -51,6 +51,8 @@ $gray20: #444447;
 $gray10: #222225;
 $gray0: #000;
 $green-base: #03aa5a;
+$blue-link: #0068c3;
+$shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.10), 0px 0px 6px 0px rgba(0, 0, 0, 0.05);
 
 /************  공통 class ************/
 @mixin deco {
@@ -165,6 +167,7 @@ input {
                 @include show;
             }
         }
+
         &__top {
             position: relative;
             @include size($h:56px, $w:100%);
@@ -204,6 +207,7 @@ input {
                 @include hide;
                 @include size($w:30px, $h:56px);
                 @include position($p:absolute, $t:0, $r:50px, $z:1);
+                transition: $transition;
                 &::before {
                     background-position: -231px -101px;
                     @include size($w:24px, $h:24px);
@@ -265,96 +269,105 @@ input {
             &>div {
                 @include display($d: flex, $ai: center);
             }
-            .search-control-btn {
-                @include display($d: flex, $ai: center, $g:4px);
-                padding: 0 7px;
-                height: 44px;
-                @include txt($fs: 16px, $lh:16px, $fw: 500, $c:$gray50);
-                position: relative;
-                span {
-                    display: none;
-                }
-                &.on .on {
-                    display: block;
-                }
-                &.off .off {
-                    display: block;
-                }
-                &+.search-control-btn::before {
-                    @include deco;
-                    background-color: #ddd;
-                    @include size($w: 3px, $h:3px);
-                    border-radius: 50%;
-                    @include position( $p:absolute, $t:50%, $l:-2px);
-                    transform: translateY(-50%); 
-                }
-            }
-
-            a.search-control-btn {
-                @include display($d: flex, $ai: center, $jc: center);
-            }
+            
         }
     }
 }
-
-.search-histroy {
-    &__lists {
-        height: 0;
-        @include hide;
-
-        &.show {
-            padding: 12px 0;
-            @include show;
-            height: auto;
+.search {
+    &-control-btn {
+        @include display($d: flex, $ai: center, $g:4px);
+        padding: 0 7px;
+        height: 44px;
+        @include txt($fs: 16px, $lh:16px, $fw: 500, $c:$gray50);
+        position: relative;
+        span {
+            display: none;
         }
-        & li {
-            padding-left: calc(16px + 36px);
-            padding-right: 16px;
-            @include display($d:flex, $ai:center);
+        &.on .on {
+            display: block;
+        }
+        &.off .off {
+            display: block;
+        }
+        &+.search-control-btn::before {
+            @include deco;
+            background-color: #ddd;
+            @include size($w: 3px, $h:3px);
+            border-radius: 50%;
+            @include position( $p:absolute, $t:50%, $l:-2px);
+            transform: translateY(-50%); 
+        }
+    }
+    &-histroy {
+        &__lists {
+            height: 0;
+            @include hide;
+    
+            &.show {
+                padding: 12px 0;
+                @include show;
+                height: auto;
+            }
+            & li {
+                padding-left: calc(16px + 36px);
+                padding-right: 16px;
+                @include display($d:flex, $jc:space-between);
+                position: relative;
+    
+                &::before {
+                    @include deco;
+                    @include country-img();
+                    @include position($p:absolute, $l:16px, $t:50%);
+                    transform: translateY(-50%);
+                    @include size($h: 24px, $w: 24px);
+                    background-position: -228px -132px;
+                }
+                &:has(.web)::before {
+                    background-position: -4px -197px;
+                }
+                &+li {
+                    margin-top: 8px;
+                }
+            }
+    
+        }
+        &__link {
+          display: block;
+          position: relative;
+          
+            & * {
+              @include txt($fs: 17px, $lh:19px);
+              padding: 9px 0;
+              word-break: keep-all;
+            }
+            & strong {
+                font-weight: 700;
+            }
+    
+        }
+        &__copy {
+            @include size($h: 38px, $w:29px);
             position: relative;
-
             &::before {
                 @include deco;
                 @include country-img();
-                @include position($p:absolute, $l:16px, $t:50%);
-                transform: translateY(-50%);
-                @include size($h: 24px, $w: 24px);
-                background-position: -228px -132px;
+                @include position($p:absolute, $l:50%, $t:50%);
+                transform: translate(-50%, -50%);
+                @include size($h: 12px, $w: 12px);
+                background-position: -48px -293px;
             }
-            &:has(.web)::before {
-                background-position: -4px -197px;
-            }
-            &+li {
-                margin-top: 8px;
-            }
-        }
-
-    }
-    &__link {
-      display: block;
-      position: relative;
-      
-      & * {
-          @include txt($fs: 17px, $lh:19px);
-          padding: 9px 0;
-        }
-    }
-    &__copy {
-        @include size($h: 38px, $w:29px);
-        position: relative;
-        &::before {
-            @include deco;
-            @include country-img();
-            @include position($p:absolute, $l:50%, $t:50%);
-            transform: translate(-50%, -50%);
-            @include size($h: 12px, $w: 12px);
-            background-position: -48px -293px;
         }
     }
 }
 
-.keyword-auto {
-    &-stage {
+a.search-control-btn {
+    @include display($d: flex, $ai: center, $jc: center);
+}
+
+
+.context {
+    &-auto-stage {
+        position: relative;
         padding: 0 16px;
         @include display($d: flex, $ai: center, $jc:space-between);
         border-top: 1px solid $gray90;
@@ -366,16 +379,63 @@ input {
             height: 44px;
         }
 
-        p {
+        &>p {
             @include txt($fs: 16px, $lh:16px, $fw: 500, $c:$gray50);
         }
     }
-    &-wrap {
-        @include display($d: flex, $ai: center, $jc:space-between);
+    &-auto-wrap {
+        @include display($d: flex, $ai: center, $jc:space-between,$g: 4px);
+        &>p {
+            @include txt($fs: 16px, $lh:16px, $fw: 500, $c:$gray50);
+        }
     }
-    // &__info {
+    &-auto__info {
+        @include size($w:16px,$h:16px);
+        @include country-img;
+        background-position: -324px -205px;
+    }
+    &-auto__pop {
+        background-color: #fff;
+        box-shadow: $shadow;
+        @include position($p:absolute, $l:16px, $z:1, $b: 44px);
+        @include size($w:calc(100% - 16px*2));
+        border-radius: 12px;
+        padding: 16px;
+        transition: $transition;
+        @include hide;
+        
+        &.active {
+            @include show;
+        }
+    }
+    &-pop {
+        &__close {
+            @include position($p:absolute, $z:1, $r: 8px, $t: 8px);
+            @include size($w:26px, $h:26px);
+            
+            &::before {
+                @include deco;
+                @include country-img;
+                @include size($w:15px, $h:15px);
+                @include position($p:absolute, $l: 50%, $t: 50%);
+                transform: translate(-50%,-50%);
+                background-position: -26px -293px;
+            }
 
-    // }
+        }
+        &__tit {
+            @include txt($fs:16px, $fw:600, $c:#000, $lh: 17px);
+        }
+        &__cnt {
+            @include txt($fs:15px, $fw:500, $c:$gray30, $lh: 20px);
+            margin-top: 8px;
+        }
+        &__link {
+            @include txt($fs:16px, $fw:500, $c:$blue-link, $lh: 20px);
+            margin-top: 4px;
+            display: block;
+        }
+    }
 }
 
 .switch {
@@ -399,7 +459,7 @@ input {
             background-color: $green-base;
             
             &::before {
-                @include position( $l: 15px);
+                @include position($l: 15px);
             }
         }
         

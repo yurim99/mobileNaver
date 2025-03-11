@@ -1,3 +1,8 @@
+@charset "UTF-8";
+/************  incolue ************/
+/************  변수 설정 ************/
+/************  공통 class ************/
+/************ 공통 ************/
 body {
   background-color: #f4f6f8;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", Arial, sans-serif;
@@ -10,6 +15,7 @@ body:has(.header-search-stage.active) {
   overflow: hidden;
 }
 
+/************ form ************/
 input {
   border: 0;
   box-sizing: border-box;
@@ -30,6 +36,7 @@ input::placeholder {
   color: #ccc;
 }
 
+/************ 시멘틱 태그 ************/
 .header {
   width: 100%;
   min-width: 320px;
@@ -94,6 +101,7 @@ input::placeholder {
   visibility: visible;
 }
 .header-search__top {
+  position: relative;
   width: 100%;
   height: 56px;
   display: flex;
@@ -135,13 +143,34 @@ input::placeholder {
   background-color: #03c75a;
   width: 30px;
   height: 30px;
-  content: "";
-  display: block;
   background-position: -163px -101px;
   z-index: 1;
 }
+.header-search__btn.delete {
+  opacity: 0;
+  visibility: hidden;
+  width: 30px;
+  height: 56px;
+  position: absolute;
+  top: 0;
+  right: 50px;
+  z-index: 1;
+  transition: all 0.15s ease-in;
+}
+.header-search__btn.delete::before {
+  background-position: -231px -101px;
+  width: 24px;
+  height: 24px;
+}
+.header-search__btn.delete.active {
+  width: 30px;
+  min-width: 30px;
+  height: 56px;
+  opacity: 1;
+  visibility: visible;
+}
 .header-search__input {
-  width: calc(100% - 100px);
+  width: 100%;
   height: 100%;
   padding: 0 10px;
   font-size: 18px;
@@ -200,7 +229,8 @@ input::placeholder {
   display: flex;
   align-items: center;
 }
-.header-search__bottom .search-control-btn {
+
+.search-control-btn {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -212,16 +242,16 @@ input::placeholder {
   color: #939396;
   position: relative;
 }
-.header-search__bottom .search-control-btn span {
+.search-control-btn span {
   display: none;
 }
-.header-search__bottom .search-control-btn.on .on {
+.search-control-btn.on .on {
   display: block;
 }
-.header-search__bottom .search-control-btn.off .off {
+.search-control-btn.off .off {
   display: block;
 }
-.header-search__bottom .search-control-btn + .search-control-btn::before {
+.search-control-btn + .search-control-btn::before {
   content: "";
   display: block;
   background-color: #ddd;
@@ -233,12 +263,6 @@ input::placeholder {
   left: -2px;
   transform: translateY(-50%);
 }
-.header-search__bottom a.search-control-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .search-histroy__lists {
   height: 0;
   opacity: 0;
@@ -255,7 +279,6 @@ input::placeholder {
   padding-right: 16px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   position: relative;
 }
 .search-histroy__lists li::before {
@@ -280,12 +303,16 @@ input::placeholder {
 }
 .search-histroy__link {
   display: block;
-  height: 38px;
   position: relative;
 }
 .search-histroy__link * {
   font-size: 17px;
   line-height: 19px;
+  padding: 9px 0;
+  word-break: keep-all;
+}
+.search-histroy__link strong {
+  font-weight: 700;
 }
 .search-histroy__copy {
   width: 29px;
@@ -307,7 +334,14 @@ input::placeholder {
   background-position: -48px -293px;
 }
 
-.keyword-auto-stage {
+a.search-control-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.context-auto-stage {
+  position: relative;
   padding: 0 16px;
   display: flex;
   justify-content: space-between;
@@ -317,21 +351,75 @@ input::placeholder {
   visibility: hidden;
   height: 0;
 }
-.keyword-auto-stage.show {
+.context-auto-stage.show {
   opacity: 1;
   visibility: visible;
   height: 44px;
 }
-.keyword-auto-stage p {
+.context-auto-stage > p {
   font-size: 16px;
   font-weight: 500;
   line-height: 16px;
   color: #939396;
 }
-.keyword-auto-wrap {
+.context-auto-wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.context-auto__pop {
+  background-color: #fff;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1), 0px 0px 6px 0px rgba(0, 0, 0, 0.05);
+  position: absolute;
+  bottom: 44px;
+  left: 16px;
+  z-index: 1;
+  width: calc(100% - 32px);
+  border-radius: 12px;
+  padding: 16px;
+}
+.context-pop__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+  width: 26px;
+  height: 26px;
+}
+.context-pop__close::before {
+  content: "";
+  display: block;
+  background-image: url(../images/common/icon-country.png);
+  background-repeat: no-repeat;
+  background-size: 352px 312px;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-position: -26px -293px;
+}
+.context-pop__tit {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 17px;
+  color: #000;
+}
+.context-pop__cnt {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #555558;
+  margin-top: 4px;
+}
+.context-pop__link {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #0068c3;
+  margin-top: 4px;
+  display: block;
 }
 
 .switch-stage {
