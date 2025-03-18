@@ -25,9 +25,12 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     function hideSearchStage() {
         headerSearchStage.classList.remove('active');
+        mainSearchInput.value ='';
+        initcontextAutoWrap();
     }
     mainSearchInput.addEventListener('click', showSearchStage)
-    headerBackBtn.addEventListener('click', hideSearchStage)
+    headerBackBtn.addEventListener('click', hideSearchStage);
+
     searchClose.addEventListener('click', function() {
         mainSearchInput.value ='';
         headerSearchStage.classList.remove('active');
