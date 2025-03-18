@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
     mainSearchInput.addEventListener('click', showSearchStage)
     headerBackBtn.addEventListener('click', hideSearchStage)
     searchClose.addEventListener('click', function() {
+        mainSearchInput.value ='';
         headerSearchStage.classList.remove('active');
         initcontextAutoWrap();
         contextAutoPop.classList.remove('active');
