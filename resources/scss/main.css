@@ -655,6 +655,7 @@ a.search-control-btn {
 }
 .feed-weather {
   height: 48px;
+  max-height: 48px;
   padding: 8px;
   display: flex;
   align-items: center;
@@ -763,6 +764,11 @@ a.search-control-btn {
 .feed__link {
   display: block;
   padding: 10px;
+}
+
+.weather-swiper {
+  max-height: 48px !important;
+  overflow: hidden;
 }
 
 @media screen and (min-width: 1024px) {

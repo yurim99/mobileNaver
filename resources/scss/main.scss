@@ -133,6 +133,7 @@
 
     &-weather {
         height: 48px;
+        max-height: 48px;
         padding: 8px;
         @include display($d: flex, $ai: center, $g:2px);
         &__icon {
@@ -223,6 +224,11 @@
         display: block;
         padding: 10px;
     }
+}
+
+.weather-swiper {
+    max-height: 48px !important;
+    overflow: hidden;
 }
 
 @media screen and (min-width: 1024px) {

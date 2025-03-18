@@ -5,13 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NAVER</title>
+    
+    <!-- css -->
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/font.css">
+    <link rel="stylesheet" href="../css/swiper-bundle.min.css">
     <link rel="stylesheet" href="../scss/common.css">
     <link rel="stylesheet" href="../scss/main.css">
-    <script  src="../js/common.js"></script>
-    <script  src="../js/weather.js"></script>
-    <script  src="../js/main.js"></script>
+    
+    <!-- js -->
+    <script src="../js/swiper-bundle.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/weather.js"></script>
+    <script src="../js/main.js"></script>
 </head>
 
 <body>
@@ -177,12 +183,14 @@
     </main>
     
     <section class="feed">
-        <div class="feed-box weather-stage">
-            <div class="feed-weather">
-                <div class="feed-weather__icon sun"></div>
-                <span class="sr-olny"></span>
-                <p class="feed-weather__data">2.2°</p>
-                <p class="feed-weather__area">부산</p>
+        <div class="feed-box weather-swiper">
+            <div class="swiper-wrapper">
+                <!-- <div class="feed-weather">
+                    <div class="feed-weather__icon sun"></div>
+                    <span class="sr-olny"></span>
+                    <p class="feed-weather__data">2.2°</p>
+                    <p class="feed-weather__area">부산</p>
+                </div> -->
             </div>
         </div>
         <div class="feed-box feed-popular">

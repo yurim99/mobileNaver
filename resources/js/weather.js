@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
     const apiKey = '4a25235891e03dd674f2b7ba12cbf13a';
     const cities = [
         { english: 'Seoul', korean: '서울' },
@@ -31,38 +31,60 @@ document.addEventListener("DOMContentLoaded", function () {
         { english: 'Bucheon', korean: '부천' }
         // { english: 'Gimpo', korean: '김포' },
         // { english: 'Gwangmyeong', korean: '광명' },
-      ];
+    ];
 
-    cities.forEach(city => {
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.english}&appid=${apiKey}&units=metric&lang=kr`;
-        const weatherStage = document.querySelector('.weather-stage');
+    const weatherStage = document.querySelector('.weather-swiper .swiper-wrapper');
 
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                if(data.cod === 200) {
-                    const temperature = data.main.temp.toFixed(1);
-                    const weather = data.weather[0].description;
-                    
-                    const feedWeatherWrap = document.createElement('div');
-                    feedWeatherWrap.classList.add('feed-weather');
-                    feedWeatherWrap.innerHTML = `
-                        <div class="feed-weather__icon"></div>
-                        <span class="sr-only">${weather}</span>
-                        <p class="feed-weather__data">${temperature}°</p>
-                        <p class="feed-weather__area">${city.korean}</p>
-                    `
-                    weatherStage.appendChild(feedWeatherWrap);
+    try {
+        const weatherData = await Promise.all(
+            cities.map(async (city) => {
+                const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.english}&appid=${apiKey}&units=metric&lang=kr`;
+                const response = await fetch(url);
+                const data = await response.json();
 
-                    console.log(`${city.english} (${city.korean}) - 기온: ${temperature}°C, 날씨: ${weather}`);
+                if (data.cod === 200) {
+                    return {
+                        korean: city.korean,
+                        temperature: data.main.temp.toFixed(1),
+                        weather: data.weather[0].description
+                    };
+                } else {
+                    return {
+                        korean: city.korean,
+                        temperature: 'N/A',
+                        weather: '데이터 없음'
+                    };
                 }
             })
-            .catch(error => {
-                console.error(`${city.english} (${city.korean})의 날씨 데이터를 가져오는 데 실패했습니다:`, error);
-            });
+        );
 
-            
-    })
+        weatherData.forEach(({ korean, temperature, weather }) => {
+            const feedWeatherWrap = document.createElement('div');
+            feedWeatherWrap.classList.add('feed-weather', 'swiper-slide');
+            feedWeatherWrap.innerHTML = `
+                <div class="feed-weather__icon"></div>
+                <span class="sr-only">${weather}</span>
+                <p class="feed-weather__data">${temperature}°</p>
+                <p class="feed-weather__area">${korean}</p>
+            `;
+            weatherStage.appendChild(feedWeatherWrap);
 
-    
-})
+            console.log(`${korean} - 기온: ${temperature}°C, 날씨: ${weather}`);
+        });
+
+        const swiper = new Swiper('.weather-swiper', {
+            direction: 'vertical',
+            loop: true,
+            slidesPerView: 1,
+            mousewheel: true,
+            autoplay: {
+                delay: 3000,
+            },
+            speed: 500
+        });
+
+        swiper.update();
+    } catch (error) {
+        console.error('날씨 데이터를 가져오는 데 실패했습니다:', error);
+    }
+});
