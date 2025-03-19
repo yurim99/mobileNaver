@@ -104,6 +104,24 @@ body:has(.header-search-stage.active) {
     border: 0;
 }
 
+
+.ellipsis,
+.ellipsis2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: keep-all;
+}
+
+.ellipsis {
+    white-space: nowrap;
+}
+
+.ellipsis2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
 /************ form ************/
 input {
     border: 0;
