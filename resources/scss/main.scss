@@ -140,7 +140,8 @@
             $icon-size: 36px;
             @include size($w: $icon-size, $h: $icon-size);
             position: relative;
-            &::before {
+            &::before,
+            &::after {
                 @include deco;
                 background-image: url(../images/common/icon-weather.png);
                 background-size: 484px 459px;
@@ -151,6 +152,30 @@
             }
             &.sun::before {
                 background-position: -267px -46px;
+            }
+            &.cloud::before {
+                @include size($w: 53px, $h: 36px);
+                background-position: -161px -90px;
+                left: calc(50% - 4px);
+            }
+            &.cloud::after {
+                @include size($w: 38px, $h: 26px);
+                background-position: -237px -293px;
+                left: calc(50% + 4px);
+                top: calc(50% + 4px);
+            }
+            &.cloud2::before {
+                top: calc(50% - 5px);
+                @include size($w: 28px, $h: 27px);
+                background-position: -400px -36px;
+            }
+            &.cloud2::after {
+                @include size($w: 47px, $h: 35px);
+                background-position: -53px -253px;
+            }
+            &.snow::before {
+                @include size($w: 28px, $h: 31px);
+                background-position: -400px 0;
             }
         }
         &>p {

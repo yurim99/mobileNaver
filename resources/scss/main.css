@@ -666,7 +666,7 @@ a.search-control-btn {
   height: 36px;
   position: relative;
 }
-.feed-weather__icon::before {
+.feed-weather__icon::before, .feed-weather__icon::after {
   content: "";
   display: block;
   background-image: url(../images/common/icon-weather.png);
@@ -681,6 +681,35 @@ a.search-control-btn {
 }
 .feed-weather__icon.sun::before {
   background-position: -267px -46px;
+}
+.feed-weather__icon.cloud::before {
+  width: 53px;
+  height: 36px;
+  background-position: -161px -90px;
+  left: calc(50% - 4px);
+}
+.feed-weather__icon.cloud::after {
+  width: 38px;
+  height: 26px;
+  background-position: -237px -293px;
+  left: calc(50% + 4px);
+  top: calc(50% + 4px);
+}
+.feed-weather__icon.cloud2::before {
+  top: calc(50% - 5px);
+  width: 28px;
+  height: 27px;
+  background-position: -400px -36px;
+}
+.feed-weather__icon.cloud2::after {
+  width: 47px;
+  height: 35px;
+  background-position: -53px -253px;
+}
+.feed-weather__icon.snow::before {
+  width: 28px;
+  height: 31px;
+  background-position: -400px 0;
 }
 .feed-weather > p {
   font-size: 14px;

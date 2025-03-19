@@ -486,6 +486,5 @@ a.search-control-btn {
         display: block;
         @include size( $w:35px, $h:25px);
         @include position( $p:absolute,$t:0, $l: 0 );
-    }
-    
+    }    
 }

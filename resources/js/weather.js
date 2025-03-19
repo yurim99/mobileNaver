@@ -42,12 +42,13 @@ document.addEventListener("DOMContentLoaded", async function () {
                 const response = await fetch(url);
                 const data = await response.json();
                 const tempData = data.main.temp;
-                const temperature = tempData < 1 ? tempData.toFixed(1) : tempData.toFixed();
-    
+                const temperature = tempData < 10 ? tempData.toFixed(1) : tempData.toFixed();
+                const weatherDate = data.weather[0].description;
+
                 if (data.cod === 200) {
                     return {
                         korean: city.korean,
-                        weather: data.weather[0].description,
+                        weather: weatherDate,
                         temperature: temperature
                     };
                 } else {
@@ -64,7 +65,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             const feedWeatherWrap = document.createElement('div');
             feedWeatherWrap.classList.add('feed-weather', 'swiper-slide');
             feedWeatherWrap.innerHTML = `
-                <div class="feed-weather__icon sun"></div>
+                <div class="feed-weather__icon"></div>
                 <span class="sr-only">${weather}</span>
                 <p class="feed-weather__data">${temperature}°</p>
                 <p class="feed-weather__area">${korean}</p>
@@ -72,7 +73,22 @@ document.addEventListener("DOMContentLoaded", async function () {
             weatherStage.appendChild(feedWeatherWrap);
 
             console.log(`${korean} - 기온: ${temperature}°C, 날씨: ${weather}`);
-        });
+        }
+        );
+
+        const feedWeather = document.querySelectorAll('.feed-weather');
+        feedWeather.forEach(weather => {
+            const feedWeatherIcon = weather.querySelector('.feed-weather__icon');
+            const feedWeatherIconName = weather.querySelector('.sr-only');
+
+            if (feedWeatherIconName.innerText === '맑음') {
+                feedWeatherIcon.classList.add('sun');
+            } else if(feedWeatherIconName.innerText.includes('흐림')) {
+                feedWeatherIcon.classList.add('cloud');
+            } else if(feedWeatherIconName.innerText.includes('구름')) {
+                feedWeatherIcon.classList.add('cloud2');
+            }
+        }); 
 
         const swiper = new Swiper('.weather-swiper', {
             direction: 'vertical',
