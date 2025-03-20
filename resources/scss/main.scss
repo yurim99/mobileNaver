@@ -284,13 +284,14 @@
         
         &.sm {
             height: 168px;
-            
+
             .popular-head__tit p + p,
             .popular-foot,
             .feed-popular__add,
             .feed-popular__top {
                 @include hide;
-                @include size($w:0, $h:0)
+                @include size($w:0, $h:0);
+                position: static;
             }
             .popular-body {
                 @include display($d: flex, $jc: space-between);
@@ -305,7 +306,7 @@
                 padding-top: 136px;
                 border-radius: 8px;
                 overflow: hidden;
-                @include position($p:relative, $t: -24px, $l:initial, $r: 6px);
+                @include position($p:relative, $t: -38px, $l:initial, $r: 6px);
                 img {
                     height: auto;
                 }

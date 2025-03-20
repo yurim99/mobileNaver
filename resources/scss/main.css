@@ -7,6 +7,8 @@ body {
   background-color: #f4f6f8;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", Arial, sans-serif;
   height: auto;
+  width: 100%;
+  min-width: 320px;
   min-height: 100vh;
   position: relative;
 }
@@ -912,6 +914,7 @@ a.search-control-btn {
   visibility: hidden;
   width: 0;
   height: 0;
+  position: static;
 }
 .feed-popular.sm .popular-body {
   display: flex;
@@ -929,7 +932,7 @@ a.search-control-btn {
   border-radius: 8px;
   overflow: hidden;
   position: relative;
-  top: -24px;
+  top: -38px;
   left: initial;
   right: 6px;
 }
