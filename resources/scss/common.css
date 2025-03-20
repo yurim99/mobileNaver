@@ -46,6 +46,14 @@ body:has(.header-search-stage.active) {
   left: 50%;
   z-index: 101;
   transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.15s ease-in;
+}
+
+.popup.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 .sr-only {

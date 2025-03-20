@@ -12,9 +12,11 @@ document.addEventListener("DOMContentLoaded", function() {
     })
     
     const feedShareBtns = document.querySelectorAll('.feed-popular__btn.share');
+    const popShare = document.querySelector('.popup__share');
     feedShareBtns.forEach(feedShareBtn=> {
         feedShareBtn.addEventListener('click', function() {
             dim.classList.add('active');
+            popShare.classList.add('active');
         })
     })
     

@@ -90,6 +90,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // dim
     window.dim = document.querySelector('.dim')
     window.popups = document.querySelectorAll('.popup')
+    window.popClose = document.querySelectorAll('.popup__close')
     
     function showDim() {
         dim.classList.add('active');
@@ -97,8 +98,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     window.hideDim = function() {
         dim.classList.remove('active');
-        popups.forEach(pop => (pop.remove('active')))
+        popups.forEach(pop => (pop.classList.remove('active')))
     }
 
     dim.addEventListener('click', hideDim)
+    popClose.forEach(close=> {
+        close.addEventListener('click', hideDim)
+    })
 })

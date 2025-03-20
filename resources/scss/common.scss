@@ -114,6 +114,12 @@ body:has(.header-search-stage.active) {
 .popup {
     @include position($p:fixed, $z:101, $t:50%, $l:50%);
     transform: translate(-50%, -50%);
+    @include hide;
+    transition: $transition;
+}
+
+.popup.active {
+    @include show;
 }
 
 .sr-only {
