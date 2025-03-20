@@ -43,6 +43,21 @@ body:has(.header-search-stage.active) {
   -webkit-box-orient: vertical;
 }
 
+.img-wrap {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 100%;
+  overflow: hidden;
+}
+
+.img-wrap > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /************ form ************/
 input {
   border: 0;

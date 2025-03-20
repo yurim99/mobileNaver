@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-    const feedPopularBtns = document.querySelectorAll('.feed-popular__btn');
+    const feedPopularBtns = document.querySelectorAll('.feed-popular__btn.all');
     feedPopularBtns.forEach(feedPopularBtn=> {
         feedPopularBtn.addEventListener('click', function(feedPopularBtn) {
             const nextEl = this.nextElementSibling;

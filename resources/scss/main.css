@@ -43,6 +43,21 @@ body:has(.header-search-stage.active) {
   -webkit-box-orient: vertical;
 }
 
+.img-wrap {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 100%;
+  overflow: hidden;
+}
+
+.img-wrap > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /************ form ************/
 input {
   border: 0;
@@ -752,26 +767,42 @@ a.search-control-btn {
   font-weight: 700;
   color: #1c1c1c;
 }
-.feed-popular__btn {
-  padding: 10px 16px;
-  display: flex;
-  align-items: center;
-}
-.feed-popular__btn::after {
+.feed-popular__btn::before {
   content: "";
   display: block;
   background-image: url(../images/common/icon-common.png);
   background-size: 343px 312px;
   background-repeat: no-repeat;
-  width: 16px;
-  height: 16px;
-  background-position: -242px -275px;
-  transform: rotate(90deg);
-  margin-top: 2px;
+  width: 24px;
+  height: 24px;
   transition: all 0.15s ease-in;
 }
-.feed-popular__btn.active::after {
+.feed-popular__btn.all {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+}
+.feed-popular__btn.all::before {
+  width: 16px;
+  height: 16px;
+  transform: rotate(90deg);
+  margin-top: 2px;
+  background-position: -242px -275px;
+}
+.feed-popular__btn.all.active::before {
   transform: rotate(-90deg);
+}
+.feed-popular__btn.share {
+  padding: 10px;
+}
+.feed-popular__btn.share::before {
+  background-position: -213px -244px;
+}
+.feed-popular__btn.keep {
+  padding: 10px;
+}
+.feed-popular__btn.keep::before {
+  background-position: -155px -244px;
 }
 .feed-popular__list {
   width: 200px;
@@ -831,7 +862,7 @@ a.search-control-btn {
 }
 .feed__link {
   display: block;
-  padding: 10px;
+  padding: 10px 10px 0;
 }
 
 .weather-swiper {
@@ -922,13 +953,20 @@ a.search-control-btn {
 .popular-body p {
   font-size: 16px;
   line-height: 22px;
+  padding-bottom: 10px;
 }
 .popular-body__img {
   width: calc(100% + 20px);
+  padding-top: calc(100% + 20px);
   position: relative;
   left: -10px;
 }
 .popular-body__img > img {
   width: 100%;
   height: 100%;
+}
+.popular-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }/*# sourceMappingURL=main.css.map */
