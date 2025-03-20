@@ -40,6 +40,14 @@ body:has(.header-search-stage.active) {
   opacity: 0.3;
 }
 
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 101;
+  transform: translate(-50%, -50%);
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

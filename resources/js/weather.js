@@ -83,9 +83,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             if (feedWeatherIconName.innerText === '맑음') {
                 feedWeatherIcon.classList.add('sun');
-            } else if(feedWeatherIconName.innerText.includes('흐림')) {
+            } else if(feedWeatherIconName.innerText.includes('흐림')|| feedWeatherIconName.innerText.includes('연무') ) {
                 feedWeatherIcon.classList.add('cloud');
-            } else if(feedWeatherIconName.innerText.includes('구름')) {
+            } else if(feedWeatherIconName.innerText.includes('구름') ) {
                 feedWeatherIcon.classList.add('cloud2');
             }
         }); 

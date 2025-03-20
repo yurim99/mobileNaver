@@ -6,13 +6,46 @@
 body {
   background-color: #f4f6f8;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", Arial, sans-serif;
-  height: 100%;
+  height: auto;
   min-height: 100vh;
   position: relative;
 }
 
+body:has(.dim.active),
 body:has(.header-search-stage.active) {
   overflow: hidden;
+}
+
+.wrap {
+  position: relative;
+}
+
+.dim {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background-color: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  transition: all 0.15s ease-in;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dim.active {
+  opacity: 1;
+  visibility: visible;
+  opacity: 0.3;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 101;
+  transform: translate(-50%, -50%);
 }
 
 .sr-only {
@@ -969,4 +1002,120 @@ a.search-control-btn {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.popup__share {
+  background-color: #f8f9fa;
+  border-radius: 13px;
+  width: 285px;
+}
+.popup__share .popup__head {
+  padding: 27px 0 18px;
+  position: relative;
+}
+.popup__share .popup__head .popup__close {
+  padding: 10px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+}
+.popup__share .popup__head .popup__close::before {
+  content: "";
+  display: block;
+  background-image: url(/resources/images/common/sns-icon.png);
+  background-size: 282px 265px;
+  background-repeat: no-repeat;
+  background-position: -252px -182px;
+  width: 20px;
+  height: 20px;
+}
+.popup__share .popup__head p {
+  text-align: center;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 26px;
+  color: #1e1e23;
+}
+.popup__share .popup__body {
+  padding: 0 16px;
+}
+.popup__share .sns__list {
+  flex: 1 1 25%;
+  width: 25%;
+  max-width: 63px;
+}
+.popup__share .sns__lists {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px 0;
+}
+
+.share__link {
+  display: block;
+}
+.share__link::before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-image: url(/resources/images/common/sns-icon.png);
+  background-size: 282px 265px;
+  background-repeat: no-repeat;
+  background-position: -84px -42px;
+  margin: 0 auto;
+}
+.share__tit {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+  color: #5a5a5a;
+  padding-top: 7px;
+  white-space: nowrap;
+}
+
+.sns__list:nth-child(1) .share__link::before {
+  background-position: -42px -42px;
+}
+
+.sns__list:nth-child(2) .share__link::before {
+  background-position: -84px -42px;
+}
+
+.sns__list:nth-child(3) .share__link::before {
+  background-position: -168px -42px;
+}
+
+.sns__list:nth-child(4) .share__link::before {
+  background-position: -126px -168px;
+}
+
+.sns__list:nth-child(5) .share__link::before {
+  background-position: -42px 0px;
+}
+
+.sns__list:nth-child(6) .share__link::before {
+  background-position: -168px -126px;
+}
+
+.sns__list:nth-child(7) .share__link::before {
+  background-position: -126px -126px;
+}
+
+.sns__list:nth-child(8) .share__link::before {
+  background-position: -42px -126px;
+}
+
+.sns__list:nth-child(9) .share__link::before {
+  background-position: -210px -168px;
+}
+
+.sns__list:nth-child(10) .share__link::before {
+  background-position: -42px -84px;
+}
+
+.sns__list:nth-child(11) .share__link::before {
+  background-position: -42px -168px;
 }/*# sourceMappingURL=main.css.map */

@@ -111,6 +111,11 @@ body:has(.header-search-stage.active) {
     opacity: .3;
 }
 
+.popup {
+    @include position($p:fixed, $z:101, $t:50%, $l:50%);
+    transform: translate(-50%, -50%);
+}
+
 .sr-only {
     position: absolute;
     width: 1px;

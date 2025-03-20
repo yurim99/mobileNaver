@@ -377,3 +377,82 @@
         @include display($d: flex, $jc: space-between, $ai: center);
     }
 }
+
+@mixin sns-icon() {
+    background-image: url(/resources/images/common/sns-icon.png);
+    background-size: 282px 265px;
+    background-repeat: no-repeat;
+}
+
+.popup__share {
+    background-color: #f8f9fa;
+    border-radius: 13px;
+    width: 285px;
+
+    & .popup {
+
+        &__head {
+            padding: 27px 0 18px;
+            position: relative;
+            
+            & .popup__close {
+                padding: 10px;
+                @include position($p:absolute, $t:8px, $r:8px, $z:1);
+                
+                &::before {
+                    @include deco;
+                    @include sns-icon;
+                    background-position: -252px -182px;
+                    @include size($w:20px, $h:20px);
+                }
+                
+            }
+            & p {
+                text-align: center;
+                @include txt($fs:19px, $lh:26px, $c:#1e1e23, $fw:700)
+            }
+        }
+
+        &__body {
+            padding: 0 16px;
+
+        }
+    }
+    
+    & .sns__list {
+        flex: 1 1 25%;
+        @include size($w: 25%, $maxw: 63px);
+
+        &s {
+            @include display($d: flex, $ai: center, $fw: wrap, $g: 16px 0,);
+        }
+    }
+}
+
+.share {
+    &__link {
+        display: block;
+        
+        &::before {
+            @include deco;
+            @include size($w:40px, $h:40px);
+            @include sns-icon;
+            background-position: -84px -42px;
+            margin: 0 auto;
+        }
+    }
+
+    &__tit {
+        text-align: center;
+        @include txt($fs:13px, $lh:16px, $fw:500, $c: #5a5a5a);
+        padding-top: 7px;
+        white-space: nowrap;
+    }
+}
+
+$pop-sns-icon: (-42px -42px,-84px -42px,-168px -42px,-126px -168px,-42px 0px, -168px -126px, -126px -126px,-42px -126px,-210px -168px, -42px -84px,-42px -168px );
+@for $i from 1 through length($pop-sns-icon) {
+    .sns__list:nth-child(#{$i}) .share__link::before {
+        background-position: nth($pop-sns-icon, $i);
+    }
+}
