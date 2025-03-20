@@ -1040,6 +1040,9 @@ a.search-control-btn {
 .popup__share .popup__body {
   padding: 0 16px;
 }
+.popup__share .popup__foot {
+  padding: 20px 0;
+}
 .popup__share .sns__list {
   flex: 1 1 25%;
   width: 25%;
@@ -1118,4 +1121,35 @@ a.search-control-btn {
 
 .sns__list:nth-child(11) .share__link::before {
   background-position: -42px -168px;
+}
+
+.popup-copy-wrap {
+  width: 245px;
+  height: 45px;
+  margin: 0 auto;
+  border: 1px solid #e6e6ea;
+  border-radius: 9px;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}
+.popup-copy__url {
+  padding: 0 7px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #2196f3;
+  width: 100%;
+}
+.popup-copy__btn {
+  background-color: #f4f4f5;
+  padding: 0 7px;
+  width: 65px;
+  min-width: 65px;
+  height: 100%;
+  font-size: 13px;
+  font-weight: 500;
+  color: #767678;
+  border-left: 1px solid #e6e6ea;
 }/*# sourceMappingURL=main.css.map */

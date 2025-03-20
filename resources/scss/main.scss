@@ -415,7 +415,10 @@
 
         &__body {
             padding: 0 16px;
+        }
 
+        &__foot {
+            padding: 20px 0;
         }
     }
     
@@ -450,9 +453,36 @@
     }
 }
 
-$pop-sns-icon: (-42px -42px,-84px -42px,-168px -42px,-126px -168px,-42px 0px, -168px -126px, -126px -126px,-42px -126px,-210px -168px, -42px -84px,-42px -168px );
+$pop-sns-icon: (-42px -42px,-84px -42px,-168px -42px,-126px -168px,-42px 0px, -168px -126px, -126px -126px,-42px -126px,-210px -168px, -42px -84px,-42px -168px);
 @for $i from 1 through length($pop-sns-icon) {
     .sns__list:nth-child(#{$i}) .share__link::before {
         background-position: nth($pop-sns-icon, $i);
+    }
+}
+
+.popup-copy {
+    &-wrap {
+        @include size($w:245px, $h: 45px);
+        margin: 0 auto;
+        border: 1px solid #e6e6ea;
+        border-radius: 9px;
+        box-sizing: border-box;
+        overflow: hidden;
+        @include display($d: flex, $ai: center);
+        background-color: #fff;
+    }
+
+    &__url {
+        padding: 0 7px;
+        @include txt($fs:13px, $c:#2196f3, $fw:500);
+        width: 100%;
+    }
+    
+    &__btn {
+        background-color: #f4f4f5;
+        padding: 0 7px;
+        @include size($h:100%, $w:65px, $minw: 65px);
+        @include txt($fs:13px, $c:#767678, $fw:500);
+        border-left: 1px solid #e6e6ea;
     }
 }
