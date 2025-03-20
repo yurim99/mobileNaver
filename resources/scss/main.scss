@@ -235,14 +235,12 @@
                 }
             }
 
-
-
         }
         &__list {      
             @include size($w: 200px, $h: 165px);
             border: 1px solid #3283fd66;
             background-color: #fff;
-            @include position($p:absolute, $r:20px,$z:1);
+            @include position($p:absolute, $r:20px, $z:2);
             @include display($d:flex, $fw: wrap);
             border-radius: 6px;
             overflow: hidden;

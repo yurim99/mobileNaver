@@ -86,4 +86,19 @@ document.addEventListener("DOMContentLoaded", function() {
     contextAutoPopClose.addEventListener('click', function() {
         contextAutoPop.classList.remove('active');
     })
+
+    // dim
+    window.dim = document.querySelector('.dim')
+    window.popups = document.querySelectorAll('.popup')
+    
+    function showDim() {
+        dim.classList.add('active');
+    }
+
+    window.hideDim = function() {
+        dim.classList.remove('active');
+        popups.forEach(pop => (pop.remove('active')))
+    }
+
+    dim.addEventListener('click', hideDim)
 })

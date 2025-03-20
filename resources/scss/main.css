@@ -811,7 +811,7 @@ a.search-control-btn {
   background-color: #fff;
   position: absolute;
   right: 20px;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   flex-wrap: wrap;
   border-radius: 6px;
