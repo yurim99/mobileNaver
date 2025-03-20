@@ -46,6 +46,14 @@ body:has(.header-search-stage.active) {
   left: 50%;
   z-index: 101;
   transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.15s ease-in;
+}
+
+.popup.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 .sr-only {
@@ -893,6 +901,41 @@ a.search-control-btn {
   width: 26px;
   height: 26px;
 }
+.feed-popular.sm {
+  height: 168px;
+}
+.feed-popular.sm .popular-head__tit p + p,
+.feed-popular.sm .popular-foot,
+.feed-popular.sm .feed-popular__add,
+.feed-popular.sm .feed-popular__top {
+  opacity: 0;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+.feed-popular.sm .popular-body {
+  display: flex;
+  justify-content: space-between;
+}
+.feed-popular.sm .popular-body p {
+  width: calc(100% - 136px - 16px);
+  height: 45px;
+  padding: 0;
+}
+.feed-popular.sm .popular-body__img {
+  width: 136px;
+  min-width: 136px;
+  padding-top: 136px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  top: -24px;
+  left: initial;
+  right: 6px;
+}
+.feed-popular.sm .popular-body__img img {
+  height: auto;
+}
 .feed__link {
   display: block;
   padding: 10px 10px 0;
@@ -981,6 +1024,7 @@ a.search-control-btn {
   transform: translate(-50%, -50%);
 }
 .popular-body {
+  position: relative;
   padding-top: 8px;
 }
 .popular-body p {
