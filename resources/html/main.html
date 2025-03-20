@@ -186,6 +186,7 @@
         </main>
         
         <section class="feed">
+            <!-- st 날씨 -->
             <div class="feed-box weather-swiper">
                 <div class="swiper-wrapper">
                     <!-- <div class="feed-weather">
@@ -196,7 +197,10 @@
                     </div> -->
                 </div>
             </div>
-            <div class="feed-box feed-popular sm">
+            <!-- ed 날씨 -->
+
+            <!-- st 요즘 인기 콘텐츠 -->
+            <div class="feed-box feed-popular">
                 <div class="feed-popular__top">
                     <p class="feed-popular__tit">요즘 인기 콘텐츠</p>
                     <div class="feed-popular__menu">
@@ -216,13 +220,13 @@
                     <button title="더보기" class="feed-popular__add"></button>
                     <a href="javascript:void(0)" class="feed__link">
                         <div class="popular-head">
-                            <ul class="popular-head__tit">
+                            <ul class="feed__tit">
                                 <li>
-                                    <i class="popular-icon">
+                                    <i class="feed-icon">
                                         <span class="sr-only">건강탐구생활</span>
                                         <img src="../images/feed/feed-icon.png" alt="">
                                     </i>
-                                    <i class="popular-icon influ">
+                                    <i class="feed-icon influ">
                                         <span class="sr-only">인플루언서</span>
                                     </i>
                                 </li>
@@ -245,6 +249,32 @@
                     </a>
                 </div>
             </div>
+            <!-- ed 요즘 인기 콘텐츠 -->
+
+            <div class="feed-box">
+                <a class="feed__link" href="javascript:void(0)">
+
+                    <div class="feed__top">
+                        <ul class="feed__tit">
+                            <li>
+                                <i class="feed-icon">
+                                    <span class="sr-only">건강탐구생활</span>
+                                    <img src="../images/feed/feed-icon.png" alt="">
+                                </i>
+                                <i class="popular-icon influ">
+                                    <span class="sr-only">인플루언서</span>
+                                </i>
+                            </li>
+                            <li>
+                                <p class="name">건강탐구생활</p>
+                                <p>2일 전</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="feed__bottom"></div>
+                </a>
+            </div>
+
         </section>
 
         <!-- st 팝업:: 공유하기 -->

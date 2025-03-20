@@ -318,6 +318,56 @@
         display: block;
         padding: 10px 10px 0;
     }
+
+    &__tit {
+        @include display($d: flex, $ai: center, $g:4px);
+        
+        & li {
+            @include display($d: flex, $ai: center, $g:4px);
+        }
+    }
+    &-icon {
+        @include size($w:20px,$minw:20px, $h:20px);
+        display: block;
+        border-radius: 50%;
+        overflow: hidden;
+        
+        & + .feed-icon {
+            margin-left: -8px;
+        }
+
+        &>img {
+            @include size($w:20px,$minw:20px, $h:20px);
+        } 
+        &.influ {
+            position: relative;
+
+            &::before {
+                @include deco;
+                @include size($w:24px,$minw:24px, $h:24px);
+                @include feed-icon;
+                background-position: -283px -145px;
+                @include position( $p:absolute, $t: 50%, $l:50%);
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+    p {
+        @include txt($lh:20px, $fs: 14px, $c:#757575);
+        & + p {
+            position: relative;
+            margin-left: 10px;
+
+            &::before {
+                @include deco;
+                @include size($w:3px, $h:3px);
+                background-color: #e6e6ea;
+                border-radius: 50%;
+                @include position( $p:absolute, $t: 50%, $l:-6px, $z:1);
+                transform: translateY(-50%);
+            }
+        }
+    }
 }
 
 .weather-swiper {
@@ -338,55 +388,13 @@
         @include display($d: flex, $jc: space-between, $ai: center);
         
         &__tit {
-            @include display($d: flex, $ai: center, $g:4px);
-            
-            &>li {
+            & li {
                 @include display($d: flex, $ai: center);
             }
-            & p {
-                @include txt($lh:20px, $fs: 14px, $c:#757575);
-                & + p {
-                    position: relative;
-                    margin-left: 10px;
 
-                    &::before {
-                        @include deco;
-                        @include size($w:3px, $h:3px);
-                        background-color: #e6e6ea;
-                        border-radius: 50%;
-                        @include position( $p:absolute, $t: 50%, $l:-6px, $z:1);
-                        transform: translateY(-50%);
-                    }
-                }
-            }
         }
     }
-    &-icon {
-        @include size($w:20px,$minw:20px, $h:20px);
-        display: block;
-        border-radius: 50%;
-        overflow: hidden;
-        
-        & + .popular-icon {
-            margin-left: -8px;
-        }
 
-        &>img {
-            @include size($w:20px,$minw:20px, $h:20px);
-        } 
-        &.influ {
-            position: relative;
-
-            &::before {
-                @include deco;
-                @include size($w:24px,$minw:24px, $h:24px);
-                @include feed-icon;
-                background-position: -283px -145px;
-                @include position( $p:absolute, $t: 50%, $l:50%);
-                transform: translate(-50%, -50%);
-            }
-        }
-    }
     &-body {
         position: relative;
         padding-top: 8px;
