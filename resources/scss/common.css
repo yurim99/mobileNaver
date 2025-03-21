@@ -571,4 +571,71 @@ a.search-control-btn {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.footer {
+  padding: 10px 0 80px;
+}
+.footer-login-wrap {
+  padding: 16px;
+  background-color: #eff5ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+.footer-login__tit {
+  font-size: 15px;
+  line-height: 24px;
+  color: #2a2a2c;
+}
+.footer-login__link {
+  font-size: 15px;
+  line-height: 18px;
+  color: #3283fd;
+  text-decoration: underline;
+}
+.footer__top {
+  padding: 8px 16px;
+  border-bottom: 1px solid #e2e6e9;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+.footer__btn {
+  background-color: #fff;
+  width: 40px;
+  min-width: 40px;
+  height: 36px;
+  border-radius: 5px;
+  border: 1px solid #e2e6e9;
+  font-size: 13px;
+  color: #767678;
+}
+.footer-size-wrap {
+  display: flex;
+  align-items: center;
+}
+.footer-size__btn {
+  border-radius: 5px 0 0 5px;
+}
+.footer-size__btn + .footer-size__btn {
+  border-radius: 0 5px 5px 0;
+  border-left-width: 0;
+}
+.footer .top-btn {
+  position: relative;
+}
+.footer .top-btn::before {
+  content: "";
+  display: block;
+  background-size: 345px 340px;
+  background-repeat: no-repeat;
+  background-image: url(/resources/images/common/icon-footer.png);
+  width: 26px;
+  height: 23px;
+  background-position: -36px -240px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }/*# sourceMappingURL=common.css.map */

@@ -2,7 +2,7 @@
 
 .main {
     margin: 60px auto 0;
-    @include size($w: 100%, $minw: 320px, $maxw: 1024px);
+    @include size($w: 100%, $maxw: 1024px);
     box-sizing: border-box;
 
     &-search {
@@ -324,6 +324,22 @@
         
         & li {
             @include display($d: flex, $ai: center, $g:4px);
+            p {
+                @include txt($lh:20px, $fs: 14px, $c:#757575);
+                & + p {
+                    position: relative;
+                    margin-left: 10px;
+        
+                    &::before {
+                        @include deco;
+                        @include size($w:3px, $h:3px);
+                        background-color: #e6e6ea;
+                        border-radius: 50%;
+                        @include position( $p:absolute, $t: 50%, $l:-8px, $z:1);
+                        transform: translateY(-50%);
+                    }
+                }
+            }
         }
     }
     &-icon {
@@ -352,22 +368,7 @@
             }
         }
     }
-    p {
-        @include txt($lh:20px, $fs: 14px, $c:#757575);
-        & + p {
-            position: relative;
-            margin-left: 10px;
 
-            &::before {
-                @include deco;
-                @include size($w:3px, $h:3px);
-                background-color: #e6e6ea;
-                border-radius: 50%;
-                @include position( $p:absolute, $t: 50%, $l:-6px, $z:1);
-                transform: translateY(-50%);
-            }
-        }
-    }
 }
 
 .weather-swiper {

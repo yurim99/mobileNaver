@@ -576,7 +576,6 @@ a.search-control-btn {
 .main {
   margin: 60px auto 0;
   width: 100%;
-  min-width: 320px;
   max-width: 1024px;
   box-sizing: border-box;
 }
@@ -953,6 +952,28 @@ a.search-control-btn {
   align-items: center;
   gap: 4px;
 }
+.feed__tit li p {
+  font-size: 14px;
+  line-height: 20px;
+  color: #757575;
+}
+.feed__tit li p + p {
+  position: relative;
+  margin-left: 10px;
+}
+.feed__tit li p + p::before {
+  content: "";
+  display: block;
+  width: 3px;
+  height: 3px;
+  background-color: #e6e6ea;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: -8px;
+  z-index: 1;
+  transform: translateY(-50%);
+}
 .feed-icon {
   width: 20px;
   min-width: 20px;
@@ -986,28 +1007,6 @@ a.search-control-btn {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-.feed p {
-  font-size: 14px;
-  line-height: 20px;
-  color: #757575;
-}
-.feed p + p {
-  position: relative;
-  margin-left: 10px;
-}
-.feed p + p::before {
-  content: "";
-  display: block;
-  width: 3px;
-  height: 3px;
-  background-color: #e6e6ea;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: -6px;
-  z-index: 1;
-  transform: translateY(-50%);
 }
 
 .weather-swiper {

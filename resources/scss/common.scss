@@ -177,6 +177,8 @@ input {
 }
 
 /************ 시멘틱 태그 ************/
+
+// 헤더
 .header {
     @include size($w: 100%, $minw: 320px, $maxw: 1024px);
     box-sizing: border-box;
@@ -547,4 +549,74 @@ a.search-control-btn {
         @include size( $w:35px, $h:25px);
         @include position( $p:absolute,$t:0, $l: 0 );
     }    
+}
+
+// 푸터
+
+@mixin footer-img {
+    background-size: 345px 340px;
+    background-repeat: no-repeat;
+    background-image: url(/resources/images/common/icon-footer.png);
+}
+
+.footer {
+    padding: 10px 0 80px;
+
+    &-login {
+        &-wrap {
+            padding: 16px;
+            background-color: #eff5ff;
+            @include display($d:flex, $ai: end, $jc:space-between);
+    
+        }
+        &__tit {
+            @include txt($fs: 15px, $lh:24px, $c:#2a2a2c);
+        }
+        &__link {
+            @include txt($fs: 15px, $lh:18px, $c:#3283fd);
+            text-decoration: underline;
+        }
+    }
+
+    &__top{
+        padding: 8px 16px;
+        border-bottom: 1px solid #e2e6e9;
+        @include display($d:flex, $ai: end, $jc:space-between);
+    }
+
+    &__btn {
+        background-color: #fff;
+        @include size($w: 40px, $minw: 40px, $h: 36px);
+        border-radius: 5px;
+        border: 1px solid #e2e6e9;
+        @include txt($fs:13px,$c:#767678)
+    }
+
+    &-size {
+        &-wrap {
+            @include display($d:flex, $ai: center,);
+        }
+        &__btn {
+            border-radius: 5px 0 0 5px;
+            
+            & + .footer-size__btn {
+                border-radius: 0 5px 5px 0;
+                border-left-width: 0;
+            }
+        }
+    }
+
+    & .top-btn {
+        position: relative;
+
+        &::before {
+            @include deco();
+            @include footer-img();
+            @include size($w:26px, $h:23px);
+            background-position: -36px -240px;
+            @include position($p: absolute, $t:50%, $l: 50%);
+            transform: translate(-50%, -50%);
+        }
+
+    }
 }
