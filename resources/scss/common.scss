@@ -211,7 +211,8 @@ input {
         }
 
         &.shopping-cart {
-            background-position: -180px -145px;
+            background-position: -180px -145px; 
+            margin: 0 auto;
         }
 
         &.talk {
@@ -561,6 +562,7 @@ a.search-control-btn {
 
 .footer {
     padding: 10px 0 80px;
+    background-color: #eaeef3;
 
     &-login {
         &-wrap {
@@ -618,5 +620,32 @@ a.search-control-btn {
             transform: translate(-50%, -50%);
         }
 
+    }
+
+    &__bottom {}
+    
+    &-link {
+        display: inline-block;
+        padding: 3px 9px;
+        @include txt($fs:13px, $lh: 16px, $c:#929294);
+
+        &__list {
+
+        }
+        
+        &__lists {
+            @include display($d:flex, $ai: center, $jc: center, $fw: wrap, $g: 6px 1px);
+            padding-top: 36px;
+            max-width: 250px;
+            margin: 0 auto;
+        }
+
+    }
+    &__logo {
+        margin: 16px auto 0;
+        @include footer-img();
+        @include size($w:74px, $h:14px);
+        background-position: -96px -191px;
+        display: block;
     }
 }

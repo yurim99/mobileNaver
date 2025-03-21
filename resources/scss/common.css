@@ -159,6 +159,7 @@ input::placeholder {
 }
 .header__btn.shopping-cart {
   background-position: -180px -145px;
+  margin: 0 auto;
 }
 .header__btn.talk {
   background-position: -225px -145px;
@@ -575,6 +576,7 @@ a.search-control-btn {
 
 .footer {
   padding: 10px 0 80px;
+  background-color: #eaeef3;
 }
 .footer-login-wrap {
   padding: 16px;
@@ -638,4 +640,31 @@ a.search-control-btn {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.footer-link {
+  display: inline-block;
+  padding: 3px 9px;
+  font-size: 13px;
+  line-height: 16px;
+  color: #929294;
+}
+.footer-link__lists {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 1px;
+  padding-top: 36px;
+  max-width: 250px;
+  margin: 0 auto;
+}
+.footer__logo {
+  margin: 16px auto 0;
+  background-size: 345px 340px;
+  background-repeat: no-repeat;
+  background-image: url(/resources/images/common/icon-footer.png);
+  width: 74px;
+  height: 14px;
+  background-position: -96px -191px;
+  display: block;
 }/*# sourceMappingURL=common.css.map */
